@@ -1,0 +1,16 @@
+{
+    "name": "stickee/canary",
+    "description": "Stickee PHP Code Style tools",
+    "license": "MIT",
+    "authors": [{
+        "name": "Paul Tibbetts",
+        "email": "paul.tibbetts@stickee.co.uk"
+    }],
+    "type": "library",
+    "require": {
+        "stickee/larastan-config": "^1.0.0",
+        "stickee/php-cs-fixer-config": "^1.1.0",
+        "stickee/rector-config": "^1.0.0"
+    },
+    "bin": ["canary"]
+}
