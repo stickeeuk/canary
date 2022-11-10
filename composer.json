@@ -9,7 +9,7 @@
     "type": "library",
     "require": {
         "stickee/larastan-config": "^1.0.0",
-        "stickee/php-cs-fixer-config": "^1.1.0",
+        "stickee/php-cs-fixer-config": "^1.1.1",
         "stickee/rector-config": "^1.0.0"
     },
     "bin": ["canary"]
