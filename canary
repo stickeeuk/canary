@@ -14,8 +14,6 @@ help() {
     echo -e "\nAvailable commands:\n"
     echo -e "    \e[1manalyse\e[0m : runs PHPStan"
     echo -e "    \e[1mfix\e[0m     : runs PHP CS Fixer"
-    echo -e "    \e[1msuggest\e[0m : runs Rector in dry run mode"
-    echo -e "    \e[1mimprove\e[0m : attempts to improve the code"
 }
 
 install() {
@@ -46,7 +44,6 @@ install() {
         echo -e "\n\e[1;32mInstalling Canary files into \"$DEST\"\e[0m\n"
         cp -urv $ROOT/../php-cs-fixer-config/dist/. $DEST
         cp -urv $ROOT/../larastan-config/dist/. $DEST
-        cp -urv $ROOT/../rector-config/dist/. $DEST
         cp -rv $ROOT/dist/. $DEST
 
         if [ ! -f "$DEST/.gitignore" ]; then
@@ -73,15 +70,6 @@ analyse() {
     $ROOT/vendor/bin/phpstan analyse $@
 }
 
-improve() {
-    $ROOT/vendor/bin/rector process $@
-    $ROOT/vendor/bin/php-cs-fixer fix $@
-}
-
-suggest() {
-    $ROOT/vendor/bin/rector process $@ --dry-run
-}
-
 if [[ -z $COMMAND ]]; then
     help
 elif [ $COMMAND == "install" ]; then
@@ -90,10 +78,6 @@ elif [ $COMMAND == "fix" ]; then
     fix
 elif [ $COMMAND == "analyse" ]; then
     analyse
-elif [ $COMMAND == "improve" ]; then
-    improve
-elif [ $COMMAND == "suggest" ]; then
-    suggest
 else
     echo -e "\e[1;31m$COMMAND\e[31m is an unrecognised command.\e[0m"
     help
