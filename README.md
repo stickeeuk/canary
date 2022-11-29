@@ -6,7 +6,7 @@ Linting and analysing tools for PHP projects.
 
 ```
 mkdir -p tools/canary
-composer require --dev --working-dir=tools/canary stickee/canary
+composer require --working-dir=tools/canary stickee/canary
 tools/canary/vendor/bin/canary install
 ```
 
