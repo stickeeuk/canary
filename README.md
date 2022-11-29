@@ -1,6 +1,22 @@
-# stickee Canary
+<p align="center" style="padding:1rem">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset=".github/images/logo-yellow.png" width="500">
+      <source media="(prefers-color-scheme: light)" srcset=".github/images/logo-dark.png" width="500">
+      <img alt="Stickee Canary" src=".github/images/logo-dark.png" width="500">
+    </picture>
+</p>
 
-Linting and analysing tools for PHP projects.
+<p align="center">
+    <img src="https://img.shields.io/github/contributors/stickeeuk/canary" alt="Contributors">
+    <a href="https://packagist.org/packages/stickee/canary"><img src="https://img.shields.io/packagist/dt/stickee/canary" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/stickee/canary"><img src="https://img.shields.io/packagist/l/stickee/canary" alt="License"></a>
+    <a href="https://packagist.org/packages/stickee/canary"><img src="https://img.shields.io/packagist/v/stickee/canary" alt="Latest Stable Version"></a>
+    <a href="https://packagist.org/packages/stickee/canary"><img src="https://img.shields.io/packagist/dependency-v/stickee/canary/php" alt="PHP Version"></a>
+</p>
+
+# Canary
+
+Linting and Static Analysis for Stickee Laravel projects.
 
 ## Installation
 
