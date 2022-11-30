@@ -30,10 +30,10 @@ It includes:
 ```
 mkdir -p tools/canary
 composer require --working-dir=tools/canary stickee/canary
-tools/canary/vendor/bin/canary install
+tools/canary/vendor/bin/canary install .
 ```
 
-You must commit this new directory and any new config files.
+You should commit this new directory and any new config files that are generated.
 
 _[Why do we install tools into their own directory?](https://github.com/FriendsOfPHP/PHP-CS-Fixer#installation)_
 
@@ -54,7 +54,7 @@ You can still call them directly.
 [PHPStan](https://github.com/nunomaduro/larastan)
 
 ```
-vendor/bin/canary analyse
+tools/canary/vendor/bin/canary analyse
 ```
 
 This command will perform static-analysis of your whole project.
@@ -73,7 +73,7 @@ See [stickee/larastan-config](https://github.com/stickeeuk/larastan-config) for 
 [PHP CS Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
 
 ```
-vendor/bin/canary fix
+tools/canary/vendor/bin/canary fix
 ```
 
 This command will attempt to fix minor code style issues.
