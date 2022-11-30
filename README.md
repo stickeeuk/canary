@@ -14,9 +14,16 @@
     <a href="https://packagist.org/packages/stickee/canary"><img src="https://img.shields.io/packagist/dependency-v/stickee/canary/php" alt="PHP Version"></a>
 </p>
 
-# Canary
+# Introduction
 
-Linting and Static Analysis for Stickee Laravel projects.
+**Canary** provides **linting** and **static analysis** for stickee Laravel projects.
+
+It includes:
+
+- the stickee [PHP CS Fixer config](https://github.com/stickeeuk/php-cs-fixer-config/) to adhere to our code styles
+- the stickee [Larastan config](https://github.com/stickeeuk/larastan-config/) to analyse your code
+- an installation command
+- shortcuts for running the included tools
 
 ## Installation
 
