@@ -2,7 +2,9 @@
 
 namespace App\Commands;
 
-class FixCommand extends ToolCommand
+use function Termwind\{render};
+
+class AnalyseCommand extends ToolCommand
 {
     /**
      * The signature of the command.
@@ -18,9 +20,9 @@ class FixCommand extends ToolCommand
      *
      * @var string
      */
-    protected $description = 'PHP CS Fixer';
+    protected $description = 'PHPStan';
 
-    protected string $path = 'vendor/bin/php-cs-fixer';
+    protected string $path = 'vendor/bin/phpstan';
 
-    protected string $command = 'fix';
+    protected string $command = 'analyse';
 }

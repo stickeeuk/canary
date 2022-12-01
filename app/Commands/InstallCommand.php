@@ -2,7 +2,6 @@
 
 namespace App\Commands;
 
-use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use LaravelZero\Framework\Commands\Command;
@@ -25,6 +24,11 @@ class InstallCommand extends Command
      */
     protected $description = 'Installs Canary config files';
 
+    /**
+     * The custom destination to install into.
+     *
+     * @var string
+     */
     private string $destination = '';
 
     /**
@@ -34,25 +38,26 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-
         if ($this->argument('directory') !== 'cwd()') {
             $this->destination = $this->argument('directory');
         }
 
         render(<<<'HTML'
-            <div class="py-1">
-                <div class="px-1 bg-yellow-300 text-black">Install</div>
-            </div>
-        HTML);
+                <div class="py-1">
+                    <div class="px-1 bg-yellow-300 text-black">Install</div>
+                </div>
+            HTML);
 
-        if ($this->tasks()) {
-            render(<<<'HTML'
+        if (! $this->tasks()) {
+            return 1;
+        }
+
+        render(<<<'HTML'
                 <div class="py-1">
                     <div class="text-yellow-300">Done.</div>
                     <div class="text-yellow-300">You should review any new files and commit them to git.</div>
                 </div>
             HTML);
-        }
     }
 
     private function tasks(): bool
@@ -60,18 +65,20 @@ class InstallCommand extends Command
         if ($this->destination) {
             $success = true;
             $disk = Storage::disk('cwd');
-            if (!$disk->exists($this->destination)) {
+
+            if (! $disk->exists($this->destination)) {
                 $success = false;
             }
 
-            $this->task('Destination directory exists', fn() => $success);
+            $this->task('Destination directory exists', fn () => $success);
 
-            if (!$success) {
+            if (! $success) {
                 render(<<<'HTML'
-                <div class="py-1">
-                    <div class="bg-red-500">The destination directory must exist to copy files to.</div>
-                </div>
-            HTML);
+                        <div class="py-1">
+                            <div class="bg-red-500">The destination directory must exist to copy files to.</div>
+                        </div>
+                    HTML);
+
                 return $success;
             }
         }
@@ -84,12 +91,16 @@ class InstallCommand extends Command
             $this->copyFilesFromVendorDirectory('stickee/larastan-config/dist');
         });
 
-        $this->task('Copy Husky pre-commit', function() {
+        $this->task('Copy Rector config', function() {
+            $this->copyFilesFromVendorDirectory('stickee/rector-config/dist');
+        });
+
+        $this->task('Copy Husky pre-commit', function () {
             $file = '.husky/pre-commit';
             $this->copyFileToCwd('local', $file, $file);
         });
 
-        $this->task('Copy Lint Staged config', function() {
+        $this->task('Copy Lint Staged config', function () {
             $this->copyFileToCwd('local', '.lintstagedrc.json');
         });
 
@@ -98,7 +109,7 @@ class InstallCommand extends Command
             $disk = Storage::disk('cwd');
             $path = $this->destination ? $this->destination . DIRECTORY_SEPARATOR . $gitignore : $gitignore;
 
-            if (!$disk->exists($path)) {
+            if (! $disk->exists($path)) {
                 return false;
             }
 
@@ -112,7 +123,7 @@ class InstallCommand extends Command
             $disk->append($path, $needle);
         });
 
-        if (!$amendedGitIgnore) {
+        if (! $amendedGitIgnore) {
             $this->line('');
             $this->error("Could not find your {$gitignore} file.");
             $this->error("Please create a {$gitignore} file or ensure you are installing into the correct directory.");
