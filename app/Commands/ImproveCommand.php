@@ -18,11 +18,13 @@ class ImproveCommand extends ToolCommand
      *
      * @var string
      */
-    protected $description = 'Rector';
+    protected $description = 'runs Rector';
 
     protected string $path = 'vendor/bin/rector';
 
     protected string $command = 'process';
 
     protected ?string $alias = 'improve';
+
+    protected bool $postFix = true;
 }

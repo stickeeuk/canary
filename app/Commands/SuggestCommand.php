@@ -2,6 +2,9 @@
 
 namespace App\Commands;
 
+use Illuminate\Support\Str;
+use Symfony\Component\Process\Process;
+
 class SuggestCommand extends ToolCommand
 {
     /**
@@ -18,7 +21,7 @@ class SuggestCommand extends ToolCommand
      *
      * @var string
      */
-    protected $description = 'Rector';
+    protected $description = 'runs Rector in --dry-run mode';
 
     protected string $path = 'vendor/bin/rector';
 
@@ -27,4 +30,12 @@ class SuggestCommand extends ToolCommand
     protected ?string $alias = 'suggest';
 
     protected array $commandOptions = ['--dry-run'];
+
+    protected string $failedCommandTaskTitle = 'no suggestions could be made';
+
+    protected function taskReportsFailure(Process $process): bool
+    {
+        return Str::of($process->getOutput())
+            ->contains('would have changed (dry-run) by Rector');
+    }
 }

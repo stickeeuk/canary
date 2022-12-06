@@ -5,6 +5,7 @@ namespace App\Commands;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use LaravelZero\Framework\Commands\Command;
+
 use function Termwind\{render};
 
 class InstallCommand extends Command
@@ -26,8 +27,6 @@ class InstallCommand extends Command
 
     /**
      * The custom destination to install into.
-     *
-     * @var string
      */
     private string $destination = '';
 
@@ -62,25 +61,8 @@ class InstallCommand extends Command
 
     private function tasks(): bool
     {
-        if ($this->destination) {
-            $success = true;
-            $disk = Storage::disk('cwd');
-
-            if (! $disk->exists($this->destination)) {
-                $success = false;
-            }
-
-            $this->task('Destination directory exists', fn () => $success);
-
-            if (! $success) {
-                render(<<<'HTML'
-                        <div class="py-1">
-                            <div class="bg-red-500">The destination directory must exist to copy files to.</div>
-                        </div>
-                    HTML);
-
-                return $success;
-            }
+        if (! $this->ensureDestinationDirectoryExists()) {
+            return false;
         }
 
         $this->task('Copy PHP CS Fixer config', function () {
@@ -91,7 +73,7 @@ class InstallCommand extends Command
             $this->copyFilesFromVendorDirectory('stickee/larastan-config/dist');
         });
 
-        $this->task('Copy Rector config', function() {
+        $this->task('Copy Rector config', function () {
             $this->copyFilesFromVendorDirectory('stickee/rector-config/dist');
         });
 
@@ -104,10 +86,49 @@ class InstallCommand extends Command
             $this->copyFileToCwd('local', '.lintstagedrc.json');
         });
 
+        $this->task('Copy example GitHub Workflow', function () {
+            $this->copyFileToCwd('local', '.github/workflows/php.yaml');
+        });
+
+        if (! $this->amendGitignore()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function ensureDestinationDirectoryExists(): bool
+    {
+        if ($this->destination !== '' && $this->destination !== '0') {
+            $success = true;
+            $disk = Storage::disk('cwd');
+
+            if (! $disk->exists($this->destination)) {
+                $success = false;
+            }
+
+            $this->task('Destination directory exists', static fn (): bool => $success);
+
+            if (! $success) {
+                render(<<<'HTML'
+                        <div class="py-1">
+                            <div class="bg-red-500">The destination directory must exist to copy files to.</div>
+                        </div>
+                    HTML);
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private function amendGitignore(): bool
+    {
         $gitignore = '.gitignore';
         $amendedGitIgnore = $this->task('.gitignore includes .php-cs-fixer.cache', function () use ($gitignore) {
             $disk = Storage::disk('cwd');
-            $path = $this->destination ? $this->destination . DIRECTORY_SEPARATOR . $gitignore : $gitignore;
+            $path = $this->destination !== '' && $this->destination !== '0' ? $this->destination . DIRECTORY_SEPARATOR . $gitignore : $gitignore;
 
             if (! $disk->exists($path)) {
                 return false;
@@ -152,7 +173,7 @@ class InstallCommand extends Command
             $dest = $src;
         }
 
-        if ($this->destination) {
+        if ($this->destination !== '' && $this->destination !== '0') {
             $dest = $this->destination . DIRECTORY_SEPARATOR . $dest;
         }
 

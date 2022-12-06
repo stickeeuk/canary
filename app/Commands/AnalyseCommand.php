@@ -2,8 +2,6 @@
 
 namespace App\Commands;
 
-use function Termwind\{render};
-
 class AnalyseCommand extends ToolCommand
 {
     /**
@@ -11,7 +9,7 @@ class AnalyseCommand extends ToolCommand
      *
      * @var string
      */
-    protected $signature = 'fix
+    protected $signature = 'analyse
                             {args?*      : Arguements to pass through}
                             {--options=* : Options to pass through}';
 

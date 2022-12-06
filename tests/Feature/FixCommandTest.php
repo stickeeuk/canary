@@ -1,5 +1,17 @@
 <?php
 
+use Illuminate\Support\Facades\Storage;
+
+beforeEach(function() {
+    $fileName = '.php-cs-fixer.cache';
+    Storage::disk('cwd')->move($fileName, "{$fileName}.old");
+});
+
+afterEach(function() {
+    $fileName = '.php-cs-fixer.cache';
+    Storage::disk('cwd')->move("{$fileName}.old", $fileName);
+});
+
 it('works', function () {
     $this->artisan('fix')
         ->expectsOutputToContain('Fixed all files')
