@@ -1,0 +1,49 @@
+on:
+  pull_request:
+    paths:
+      - '**.php'
+name: PHP
+
+jobs:
+  php-stan:
+    name: analyse
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Check if any PHP files changed
+        id: changed-php-files
+        uses: tj-actions/changed-files@v23.1
+        with:
+          files: |
+            **.php
+            **/*.php
+      - name: Install dependencies
+        if: steps.changed-php-files.outputs.any_changed == 'true'
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.1"
+      - name: Run PHPStan
+        if: steps.changed-php-files.outputs.any_changed == 'true'
+        run: |
+            vendor/bin/phpstan analyse -c phpstan.ci.neon --error-format=github
+  php-cs-fixer:
+    name: fix
+    needs: php-stan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install PHP CS Fixer
+        uses: php-actions/composer@v6
+        with:
+          args: --working-dir=tools/php-cs-fixer
+      - name: Run PHP-CS-Fixer
+        run: vendor/bin/php-cs-fixer fix
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "style: PHP CS Fixer"
+          file_pattern: "**/*.php"
