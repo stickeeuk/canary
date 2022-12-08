@@ -18,7 +18,7 @@ class ImproveCommand extends ToolCommand
      *
      * @var string
      */
-    protected $description = 'runs Rector';
+    protected $description = 'Rector';
 
     protected string $path = 'vendor/bin/rector';
 

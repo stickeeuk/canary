@@ -21,7 +21,7 @@ class SuggestCommand extends ToolCommand
      *
      * @var string
      */
-    protected $description = 'runs Rector in --dry-run mode';
+    protected $description = 'Rector (--dry-run)';
 
     protected string $path = 'vendor/bin/rector';
 
