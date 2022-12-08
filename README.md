@@ -25,6 +25,12 @@ It includes:
 - an installation command
 - shortcuts for running the included tools
 
+## Husky and Lint Staged
+
+[Lint Staged](https://github.com/okonet/lint-staged) can be used to lint staged files and [Husky](https://typicode.github.io/husky) can be used to manage the git pre-commit hook that would call it.
+
+The install command will copy example config files over for these tools but you **must** install them before running it.
+
 ## Installation
 
 ```
