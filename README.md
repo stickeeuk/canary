@@ -36,7 +36,7 @@ The install command will copy example config files over for these tools but you 
 ```
 mkdir -p tools/canary
 composer require --working-dir=tools/canary stickee/canary
-tools/canary/vendor/bin/canary install .
+tools/canary/vendor/bin/canary install
 ```
 
 You should commit this new directory and any new config files that are generated.
