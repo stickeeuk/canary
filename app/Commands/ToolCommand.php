@@ -55,10 +55,12 @@ abstract class ToolCommand extends Command
             $this->alias = $this->command;
         }
 
+        $args = $this->input->getArguments()['args'];
+
         $command = array_merge(
             [$this->toolPath(), $this->command],
             $this->commandOptions,
-            $this->input->getArguments()['args'],
+            $args,
             $this->getDynamicOptions()
         );
 
@@ -98,7 +100,7 @@ abstract class ToolCommand extends Command
         }
 
         if ($this->postFix) {
-            $this->call('fix', ['args' => $this->input->getArguments()['args']]);
+            $this->call('fix', ['args' => $args]);
         }
     }
 
