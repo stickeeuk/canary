@@ -11,12 +11,17 @@ use function Termwind\{render};
 class InstallCommand extends Command
 {
     /**
+     * @var string
+     */
+    private const DEFAULT_INSTALL_DIRECTORY = 'cwd()';
+
+    /**
      * The signature of the command.
      *
      * @var string
      */
     protected $signature = 'install
-                            {directory=cwd() : The directory to copy files into}';
+                            {directory=' . self::DEFAULT_INSTALL_DIRECTORY . ' : The directory to copy files into}';
 
     /**
      * The description of the command.
@@ -37,7 +42,7 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        if ($this->argument('directory') !== 'cwd()') {
+        if ($this->argument('directory') !== self::DEFAULT_INSTALL_DIRECTORY) {
             $this->destination = $this->argument('directory');
         }
 
