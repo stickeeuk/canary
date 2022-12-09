@@ -34,7 +34,7 @@ return [
     | the global command line "--env" option when calling commands.
     |
      */
-    'env' => 'development',
+    'env' => 'production',
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
