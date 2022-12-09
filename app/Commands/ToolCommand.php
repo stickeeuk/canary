@@ -9,9 +9,9 @@ use Symfony\Component\Process\Process;
 abstract class ToolCommand extends Command
 {
     /**
-     * The path of the original tool.
+     * The CLI name of the original tool.
      */
-    protected string $path;
+    protected string $toolName;
 
     /**
      * The command to run.
@@ -56,7 +56,7 @@ abstract class ToolCommand extends Command
         }
 
         $command = array_merge(
-            [$this->path, $this->command],
+            [$this->toolPath(), $this->command],
             $this->commandOptions,
             $this->input->getArguments()['args'],
             $this->getDynamicOptions()
@@ -69,7 +69,15 @@ abstract class ToolCommand extends Command
         //  because a diff is present)
         $commandReportsFailure = false;
 
-        $success = $this->task(implode(' ', $command), function () use ($command, &$commandReportsFailure) {
+        $taskName = trim(
+            str_replace(
+                $this->vendorBinPath(),
+                '',
+                implode(' ', $command)
+            )
+        );
+
+        $success = $this->task($taskName, function () use ($command, &$commandReportsFailure) {
             $task = $this->process($command);
 
             if ($task['reportsFailure']) {
@@ -102,6 +110,16 @@ abstract class ToolCommand extends Command
     protected function taskReportsFailure(Process $process): bool
     {
         return false;
+    }
+
+    private function toolPath(): string
+    {
+        return $this->vendorBinPath() . $this->toolName;
+    }
+
+    private function vendorBinPath(): string
+    {
+        return base_path('vendor/bin/');
     }
 
     /**

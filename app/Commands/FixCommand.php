@@ -20,7 +20,7 @@ class FixCommand extends ToolCommand
      */
     protected $description = 'PHP CS Fixer';
 
-    protected string $path = 'vendor/bin/php-cs-fixer';
+    protected string $toolName = 'php-cs-fixer';
 
     protected string $command = 'fix';
 }

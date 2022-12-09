@@ -20,7 +20,7 @@ class ImproveCommand extends ToolCommand
      */
     protected $description = 'Rector';
 
-    protected string $path = 'vendor/bin/rector';
+    protected string $toolName = 'rector';
 
     protected string $command = 'process';
 

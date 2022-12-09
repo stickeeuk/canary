@@ -20,7 +20,7 @@ class AnalyseCommand extends ToolCommand
      */
     protected $description = 'PHPStan';
 
-    protected string $path = 'vendor/bin/phpstan';
+    protected string $toolName = 'phpstan';
 
     protected string $command = 'analyse';
 }
