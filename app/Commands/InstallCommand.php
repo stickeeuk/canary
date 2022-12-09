@@ -83,7 +83,7 @@ class InstallCommand extends Command
         });
 
         $this->task('Copy Husky pre-commit', function () {
-            $file = '.husky/pre-commit';
+            $file = '.husky' . DIRECTORY_SEPARATOR . 'pre-commit';
             $this->copyFileToCwd('local', $file, $file);
         });
 
@@ -92,7 +92,8 @@ class InstallCommand extends Command
         });
 
         $this->task('Copy example GitHub Workflow', function () {
-            $this->copyFileToCwd('local', '.github/workflows/php.yaml');
+            $file = '.github' . DIRECTORY_SEPARATOR . 'workflows' . DIRECTORY_SEPARATOR . 'php.yaml';
+            $this->copyFileToCwd('local', $file);
         });
 
         return $this->amendGitignore();
