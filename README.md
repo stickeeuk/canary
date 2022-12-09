@@ -82,7 +82,7 @@ See [stickee/php-cs-fixer-config](https://github.com/stickeeuk/php-cs-fixer-conf
 [Rector](https://github.com/rectorphp/rector) in `--dry-run` mode
 
 ```
-vendor/bin/canary suggest
+tools/canary/vendor/bin/canary suggest
 ```
 
 This command will suggest improvements as diffs in the terminal.
@@ -96,7 +96,7 @@ See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more
 [Rector](https://github.com/rectorphp/rector)
 
 ```
-vendor/bin/canary improve
+tools/canary/vendor/bin/canary improve
 ```
 
 This command will refactor your code in an attempt to improve it.
