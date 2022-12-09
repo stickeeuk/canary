@@ -141,7 +141,6 @@ abstract class ToolCommand extends Command
         if (! $process->isSuccessful() && ! $taskFailedSuccessfully) {
             $taskSuccess = false;
             $output = $process->getErrorOutput();
-
             $stdOut = $process->getOutput();
 
             if ($stdOut !== '' && $stdOut !== '0') {
@@ -168,7 +167,6 @@ abstract class ToolCommand extends Command
     private function getDynamicOptions(): array
     {
         $input = $this->input->__toString();
-
         $options = [];
 
         foreach (explode(' ', $input) as $string) {
