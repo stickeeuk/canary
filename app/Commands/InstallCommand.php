@@ -95,11 +95,7 @@ class InstallCommand extends Command
             $this->copyFileToCwd('local', '.github/workflows/php.yaml');
         });
 
-        if (! $this->amendGitignore()) {
-            return false;
-        }
-
-        return true;
+        return $this->amendGitignore();
     }
 
     private function ensureDestinationDirectoryExists(): bool
