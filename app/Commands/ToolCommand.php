@@ -70,10 +70,10 @@ abstract class ToolCommand extends Command
         $commandReportsFailure = false;
 
         $taskName = trim(
-            str_replace(
-                $this->vendorBinPath(),
-                '',
-                implode(' ', $command)
+            Str::replace(
+                search: $this->vendorBinPath(),
+                replace: '',
+                subject: implode(' ', $command),
             )
         );
 
