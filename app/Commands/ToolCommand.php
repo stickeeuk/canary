@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Commands;
 
 use Illuminate\Support\Str;
@@ -8,48 +10,25 @@ use Symfony\Component\Process\Process;
 
 abstract class ToolCommand extends Command
 {
-    /**
-     * The CLI name of the original tool.
-     */
     protected string $toolName;
 
-    /**
-     * The command to run.
-     */
     protected string $command;
 
-    /**
-     * The alias of the command.
-     */
     protected ?string $alias = null;
 
-    /**
-     * The name of the extra task if the command reports a failure
-     */
     protected string $failedCommandTaskTitle = 'task failed';
 
-    /**
-     * Any options for the command;
-     */
     protected array $commandOptions = [];
 
-    /**
-     * If the tool requires a fix running afterwards.
-     */
     protected bool $postFix = false;
 
     public function __construct()
     {
         parent::__construct();
-        $this->ignoreValidationErrors(); // allows passing dynamic args and options through
+        $this->ignoreValidationErrors(); // Allows passing dynamic args and options through.
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         if (! $this->alias) {
             $this->alias = $this->command;
@@ -62,11 +41,10 @@ abstract class ToolCommand extends Command
             $this->getDynamicOptions()
         );
 
-        // some commands report exit code 1
-        // even if the command itself ran ok
-        // (commands that run `git diff` do this
-        //  for CI to report an "error"
-        //  because a diff is present)
+        /*
+         * Some commands report exit code 1, even if the command itself ran OK. Commands that run 'git diff' do this
+         * for CI to report an 'error', because a diff is present.
+         */
         $commandReportsFailure = false;
 
         $taskName = trim(
@@ -100,13 +78,10 @@ abstract class ToolCommand extends Command
         if ($this->postFix) {
             $this->call('fix', ['args' => $this->input->getArguments()['args']]);
         }
+
+        return 0;
     }
 
-    /**
-     * Used to check if the underlying command reported a failure
-     *
-     * @param \Symfony\Component\Process\Process $process
-     */
     protected function taskReportsFailure(Process $process): bool
     {
         return false;
@@ -122,13 +97,7 @@ abstract class ToolCommand extends Command
         return base_path('vendor/bin/');
     }
 
-    /**
-     * Run the underlying command
-     *
-     * @param array $command
-     *
-     * @return array<string, bool>
-     */
+    /** @return array<string, bool> */
     private function process(array $command): array
     {
         $process = new Process($command);
@@ -160,9 +129,7 @@ abstract class ToolCommand extends Command
         ];
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return array<int, string> */
     private function getDynamicOptions(): array
     {
         $input = $this->input->__toString();
