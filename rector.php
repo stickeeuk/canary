@@ -24,15 +24,15 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     $rectorConfig->skip([
-        // \Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector::class, // adds return types which may conflict with Laravel built-ins
-        \Rector\TypeDeclaration\Rector\Closure\AddClosureReturnTypeRector::class, // adds return type to closures which may conflict with Laravel built-ins
-        \Rector\EarlyReturn\Rector\If_\ChangeOrIfReturnToEarlyReturnRector::class, // forces an early return which is soemtimes less easier to read
-        \Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector::class, // removes @param from docblocks
-        \Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector::class, // removes return from docblocks
-        \Rector\CodingStyle\Rector\PostInc\PostIncDecToPreIncDecRector::class, // changes $i++ to ++$i
-        \Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector::class, // changes "th{$is}" to sprintf('th%s', 'is')
-        \Rector\Php80\Rector\FunctionLike\MixedTypeRector::class, // removes docblocks
-        \Rector\Php80\Rector\FunctionLike\UnionTypesRector::class, // removes docblocks
+        // \Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector::class, // Adds return types, which may conflict with Laravel built-ins.
+        \Rector\TypeDeclaration\Rector\Closure\AddClosureReturnTypeRector::class, // Adds return type to closures, which may conflict with Laravel built-ins.
+        \Rector\EarlyReturn\Rector\If_\ChangeOrIfReturnToEarlyReturnRector::class, // Forces an early return, which is sometimes less easy to read.
+        \Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector::class, // Removes @param from docblocks.
+        \Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector::class, // Removes return from docblocks.
+        \Rector\CodingStyle\Rector\PostInc\PostIncDecToPreIncDecRector::class, // Changes $i++ to ++$i.
+        \Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector::class, // Changes "th{$is}" to sprintf('th%s', 'is').
+        \Rector\Php80\Rector\FunctionLike\MixedTypeRector::class, // Removes docblocks.
+        \Rector\Php80\Rector\FunctionLike\UnionTypesRector::class, // Removes docblocks.
     ]);
 
 };

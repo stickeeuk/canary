@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Facades\Storage;
 
 it('works', function () {
@@ -28,13 +30,14 @@ it('suggests improvements on bad code', function () {
 
     $path = 'BadCode.php';
     $storagePath = storage_path('app' . DIRECTORY_SEPARATOR . $path);
-    // create temporary file to process
+
+    // Create temporary file to process.
     Storage::put($path, $badCode);
 
     $this->artisan("suggest {$storagePath}")
         ->expectsOutputToContain('public function example(): bool')
         ->assertFailed();
 
-    // tidy up temporary file
+    // Tidy up temporary file.
     Storage::delete($path);
 });

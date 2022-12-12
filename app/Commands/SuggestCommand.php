@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Commands;
 
 use Illuminate\Support\Str;
@@ -7,20 +9,12 @@ use Symfony\Component\Process\Process;
 
 class SuggestCommand extends ToolCommand
 {
-    /**
-     * The signature of the command.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $signature = 'suggest
-                            {args?*      : Arguements to pass through}
+                            {args?*      : Arguments to pass through}
                             {--options=* : Options to pass through}';
 
-    /**
-     * The description of the command.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $description = 'Rector (--dry-run)';
 
     protected string $toolName = 'rector';

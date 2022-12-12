@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Facades\Storage;
 
 $requiredFiles = [
@@ -13,13 +15,13 @@ $requiredFiles = [
     'rector.php'
 ];
 
-beforeEach(function() use ($requiredFiles) {
+beforeEach(function () use ($requiredFiles) {
     foreach ($requiredFiles as $file) {
         Storage::disk('cwd')->move($file, "{$file}.old");
     }
 });
 
-afterEach(function() use ($requiredFiles) {
+afterEach(function () use ($requiredFiles) {
     foreach ($requiredFiles as $file) {
         Storage::disk('cwd')->move("{$file}.old", $file);
     }
@@ -70,7 +72,7 @@ it('works in a custom directory', function () {
 
     $this->assertFileExists($directory . DIRECTORY_SEPARATOR . '.php-cs-fixer.dist.php');
 
-    // tidy up
+    // Tidy up.
     $disk->deleteDirectory($directory);
 });
 
@@ -83,7 +85,7 @@ it('requires a .gitignore to install', function () {
     $this->artisan("install {$directory}")
         ->assertExitCode(1);
 
-    // tidy up
+    // Tidy up.
     $disk->deleteDirectory($directory);
 });
 
@@ -102,6 +104,6 @@ it('updates the .gitignore', function () {
         Storage::disk('cwd')->get($directory . DIRECTORY_SEPARATOR . $gitignore)
     );
 
-    // tidy up
+    // Tidy up.
     $disk->deleteDirectory($directory);
 });

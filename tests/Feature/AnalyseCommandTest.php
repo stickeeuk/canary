@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 it('works', function () {
     $this->artisan('analyse')
         ->expectsOutputToContain('No errors')

@@ -1,23 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Commands;
 
 class FixCommand extends ToolCommand
 {
-    /**
-     * The signature of the command.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $signature = 'fix
-                            {args?*      : Arguements to pass through}
+                            {args?*      : Arguments to pass through}
                             {--options=* : Options to pass through}';
 
-    /**
-     * The description of the command.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $description = 'PHP CS Fixer';
 
     protected string $toolName = 'php-cs-fixer';
