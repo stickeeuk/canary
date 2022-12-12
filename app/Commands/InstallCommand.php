@@ -12,9 +12,11 @@ use function Termwind\{render};
 
 class InstallCommand extends Command
 {
+    /** @var string */
     protected $signature = 'install
                             {directory=cwd() : The directory to copy files into}';
 
+    /** @var string */
     protected $description = 'Installs Canary config files';
 
     private string $destination = '';
@@ -76,11 +78,7 @@ class InstallCommand extends Command
             $this->copyFileToCwd('local', '.github/workflows/php.yaml');
         });
 
-        if (! $this->amendGitignore()) {
-            return false;
-        }
-
-        return true;
+        return $this->amendGitignore();
     }
 
     private function ensureDestinationDirectoryExists(): bool

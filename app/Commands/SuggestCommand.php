@@ -9,10 +9,12 @@ use Symfony\Component\Process\Process;
 
 class SuggestCommand extends ToolCommand
 {
+    /** @var string */
     protected $signature = 'suggest
                             {args?*      : Arguments to pass through}
                             {--options=* : Options to pass through}';
 
+    /** @var string */
     protected $description = 'Rector (--dry-run)';
 
     protected string $toolName = 'rector';
