@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 it('works', function () {
     $this->artisan('improve config/app.php')
         ->expectsOutputToContain('[OK] Rector is done!')

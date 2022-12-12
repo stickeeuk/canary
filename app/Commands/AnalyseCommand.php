@@ -1,23 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Commands;
 
 class AnalyseCommand extends ToolCommand
 {
-    /**
-     * The signature of the command.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $signature = 'analyse
-                            {args?*      : Arguements to pass through}
+                            {args?*      : Arguments to pass through}
                             {--options=* : Options to pass through}';
 
-    /**
-     * The description of the command.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $description = 'PHPStan';
 
     protected string $toolName = 'phpstan';

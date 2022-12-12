@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Commands;
 
 use Illuminate\Support\Facades\Storage;
@@ -10,32 +12,16 @@ use function Termwind\{render};
 
 class InstallCommand extends Command
 {
-    /**
-     * The signature of the command.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $signature = 'install
                             {directory=cwd() : The directory to copy files into}';
 
-    /**
-     * The description of the command.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $description = 'Installs Canary config files';
 
-    /**
-     * The custom destination to install into.
-     */
     private string $destination = '';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         if ($this->argument('directory') !== 'cwd()') {
             $this->destination = $this->argument('directory');
@@ -54,9 +40,11 @@ class InstallCommand extends Command
         render(<<<'HTML'
                 <div class="py-1">
                     <div class="text-yellow-300">Done.</div>
-                    <div class="text-yellow-300">You should review any new files and commit them to git.</div>
+                    <div class="text-yellow-300">You should review any new files and commit them to Git.</div>
                 </div>
             HTML);
+
+        return 0;
     }
 
     private function tasks(): bool
@@ -90,11 +78,7 @@ class InstallCommand extends Command
             $this->copyFileToCwd('local', '.github/workflows/php.yaml');
         });
 
-        if (! $this->amendGitignore()) {
-            return false;
-        }
-
-        return true;
+        return $this->amendGitignore();
     }
 
     private function ensureDestinationDirectoryExists(): bool
@@ -169,7 +153,7 @@ class InstallCommand extends Command
 
     private function copyFileToCwd(string $disk, string $src, ?string $dest = null): void
     {
-        if (is_null($dest)) {
+        if ($dest === null) {
             $dest = $src;
         }
 
