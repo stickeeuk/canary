@@ -22,6 +22,9 @@ It includes:
 
 - the stickee [PHP CS Fixer config](https://github.com/stickeeuk/php-cs-fixer-config/) to adhere to our code styles
 - the stickee [Larastan config](https://github.com/stickeeuk/larastan-config/) to analyse your code
+- the stickee [Rector config](https://github.com/stickeeuk/rector-config) to refactor your code
+- shortcuts to run the included tools
+- an installation command
 
 ## Husky and Lint Staged
 
@@ -37,7 +40,7 @@ composer require --working-dir=tools/canary stickee/canary
 tools/canary/vendor/bin/canary install
 ```
 
-_[Why do we install tools into their own directory?](https://github.com/FriendsOfPHP/PHP-CS-Fixer#installation)_
+_[Why do we install tools into their own directory?](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer#installation)_
 
 You should commit this new directory and the config files that are installed.
 
