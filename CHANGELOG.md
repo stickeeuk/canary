@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/stickeeuk/canary/compare/v2.0.0...v2.0.1) (2022-12-13)
+
+
+### Bug Fixes
+
+* composer bin path when installed with composer ([#12](https://github.com/stickeeuk/canary/issues/12)) ([a64162e](https://github.com/stickeeuk/canary/commit/a64162ea28390b62b5999aee80b78ffebfcd5404))
+
 # [2.0.0](https://github.com/stickeeuk/canary/compare/v1.0.2...v2.0.0) (2022-12-13)
 
 
