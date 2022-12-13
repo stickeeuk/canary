@@ -96,7 +96,7 @@ abstract class ToolCommand extends Command
 
     private function vendorBinPath(): string
     {
-        return base_path('vendor/bin/');
+        return vendor_path('bin' . DIRECTORY_SEPARATOR);
     }
 
     /** @return array<string, bool> */
