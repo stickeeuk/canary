@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         \Illuminate\Console\Application::starting(
-            function ($artisan) {
+            static function ($artisan) {
                 $artisan->setName(<<<'EOF'
                     ,,,,,,,,,,,,,,,,,,,,,,*&@@@@@@@@@@@@@%,,,,,,,,,,,,,,,,,,,,,,
                       ,,,,,,,,,,,,,,,,,*@@@@&,,,,,,,,,,,,,,/@@@@@,,,,,,,,,,,,,,,,,

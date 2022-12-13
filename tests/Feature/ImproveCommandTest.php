@@ -8,6 +8,12 @@ it('works', function () {
         ->assertExitCode(0);
 });
 
+it('displays the name of the underlying tool', function () {
+    $this->artisan('improve')
+        ->expectsOutputToContain('rector process')
+        ->assertExitCode(0);
+});
+
 it('allows passing options', function () {
     $this->artisan('improve --help')
         ->expectsOutputToContain('Display help for the given command')
