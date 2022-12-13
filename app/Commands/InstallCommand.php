@@ -12,6 +12,9 @@ use function Termwind\{render};
 
 class InstallCommand extends Command
 {
+    /**
+     * @var string
+     */
     private const DEFAULT_INSTALL_DIRECTORY = 'cwd()';
 
     /** @var string */
