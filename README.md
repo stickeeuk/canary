@@ -22,6 +22,9 @@ It includes:
 
 - the stickee [PHP CS Fixer config](https://github.com/stickeeuk/php-cs-fixer-config/) to adhere to our code styles
 - the stickee [Larastan config](https://github.com/stickeeuk/larastan-config/) to analyse your code
+- the stickee [Rector config](https://github.com/stickeeuk/rector-config) to refactor your code
+- shortcuts to run the included tools
+- an installation command
 
 ## Husky and Lint Staged
 
