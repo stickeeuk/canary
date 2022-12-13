@@ -34,48 +34,12 @@ The install command will copy example config files over for these tools but you 
 ```
 mkdir -p tools/canary
 composer require --working-dir=tools/canary stickee/canary
+tools/canary/vendor/bin/canary install
 ```
 
 _[Why do we install tools into their own directory?](https://github.com/FriendsOfPHP/PHP-CS-Fixer#installation)_
 
-### Config files
-
-Then copy over the config files:
-
-```
-# Larastan
-cp tools/canary/vendor/stickee/larastan-config/dist/phpstan.ci.neon .
-cp tools/canary/vendor/stickee/larastan-config/dist/phpstan.dist.neon .
-```
-
-```
-# PHP CS Fixer
-cp tools/canary/vendor/stickee/php-cs-fixer-config/dist/.php-cs-fixer.dist.php .
-```
-
-### Husky and Lint Staged
-
-[Lint Staged](https://github.com/okonet/lint-staged) is used to lint staged files before you commit them.
-
-It is called by the pre-commit hook that is managed by [Husky](https://typicode.github.io/husky).
-
-Install them using:
-
-```
-npx husky-init && npm install
-npm install --save-dev lint-staged
-```
-
-and copy over their config files with:
-
-```
-cp tools/canary/vendor/stickee/canary/dist/.husky/pre-commit .husky/pre-commit
-cp tools/canary/vendor/stickee/canary/dist/.lintstagedrc.json .lintstagedrc.json
-```
-
-### Git
-
-You should commit this new directory and the config files you have copied over.
+You should commit this new directory and the config files that are installed.
 
 ## Usage
 
@@ -112,3 +76,45 @@ It _can_ be ran against a single file.
 It _should_ be ran against staged files as part of the `pre-commit` hook.
 
 See [stickee/php-cs-fixer-config](https://github.com/stickeeuk/php-cs-fixer-config) for more details.
+
+### `suggest`
+
+[Rector](https://github.com/rectorphp/rector) in `--dry-run` mode
+
+```
+tools/canary/vendor/bin/canary suggest
+```
+
+This command will suggest improvements as diffs in the terminal.
+
+Any `suggest`ed improvements must be performed manually or you can run the `improve` command to do it for you.
+
+See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more details.
+
+### `improve`
+
+[Rector](https://github.com/rectorphp/rector)
+
+```
+tools/canary/vendor/bin/canary improve
+```
+
+This command will refactor your code in an attempt to improve it.
+
+Any `improve`d code **must** be checked before committing.
+
+It _can_ be ran against a single file.
+
+It should **not** be ran as part of the `pre-commit` hook.
+
+See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more details.
+
+#### Note
+
+You _may_ find it useful to add these `improve`ments as patches with Git.
+
+You could use a Git integration in your editor or stage the `improve`ments as patches with:
+
+```
+git add <file> -p
+```
