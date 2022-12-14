@@ -48,6 +48,14 @@ You should commit this new directory and the config files that are installed.
 
 Canary simply installs some tools for you to use.
 
+### Options
+
+To pass options through you must write them after a `--`.
+
+```
+tools/canary/vendor/bin/canary analyse -- -c phpstan.ci.neon --error-format=github
+```
+
 ### Commands
 
 ### `analyse`
@@ -55,7 +63,7 @@ Canary simply installs some tools for you to use.
 [PHPStan](https://github.com/nunomaduro/larastan)
 
 ```
-tools/canary/vendor/bin/phpstan analyse -c phpstan.dist.neon
+tools/canary/vendor/bin/canary analyse -- -c phpstan.dist.neon
 ```
 
 This command will perform static-analysis of your whole project.
@@ -69,7 +77,7 @@ See [stickee/larastan-config](https://github.com/stickeeuk/larastan-config) for 
 [PHP CS Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
 
 ```
-tools/canary/vendor/bin/php-cs-fixer fix --config .php-cs-fixer.dist.php
+tools/canary/vendor/bin/canary fix -- --config .php-cs-fixer.dist.php
 ```
 
 This command will attempt to fix minor code style issues.
