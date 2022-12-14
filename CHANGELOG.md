@@ -1,3 +1,11 @@
+## [2.0.2](https://github.com/stickeeuk/canary/compare/v2.0.1...v2.0.2) (2022-12-14)
+
+
+### Bug Fixes
+
+* paths inside installed PHPStan config ([5e1387c](https://github.com/stickeeuk/canary/commit/5e1387cef9dd4156d6875864040d7bfc342dffac))
+* short timeout by increasing it to 5 minutes ([15911ad](https://github.com/stickeeuk/canary/commit/15911ad94125470a21ad349ad0abc36158c496f7))
+
 ## [2.0.1](https://github.com/stickeeuk/canary/compare/v2.0.0...v2.0.1) (2022-12-13)
 
 
