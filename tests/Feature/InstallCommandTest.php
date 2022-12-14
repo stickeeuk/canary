@@ -107,3 +107,19 @@ it('updates the .gitignore', function () {
     // Tidy up.
     $disk->deleteDirectory($directory);
 });
+
+it ('updates the Larastan config paths', function () {
+    $this->artisan('install');
+
+    $contents = Storage::disk('cwd')->get('phpstan.dist.neon');
+
+    $this->assertStringContainsString(
+        'tools/canary/',
+        $contents
+    );
+
+    $this->assertStringNotContainsString(
+        'tools/phpstan/',
+        $contents
+    );
+});
