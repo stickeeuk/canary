@@ -103,6 +103,7 @@ abstract class ToolCommand extends Command
     private function process(array $command): array
     {
         $process = new Process($command);
+        $process->setTimeout(300);
         $process->run();
 
         $taskFailedSuccessfully = $this->taskReportsFailure($process);
