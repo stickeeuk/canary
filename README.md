@@ -135,7 +135,7 @@ git add <file> -p
 Contributions are welcome! Canary is written using [Laravel Zero](https://github.com/laravel-zero/laravel-zero).
 Improvements to any of the amalgamated open source tools should be directed towards their respective repositories.
 
-You are encouraged to provide tests, which are written used the [Pest](https://github.com/pestphp/pest) testing framework.
+You are encouraged to provide tests, which are written using the [Pest](https://github.com/pestphp/pest) testing framework.
 
 ## License
 
