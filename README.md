@@ -46,7 +46,7 @@ You should commit this new directory and the config files that are installed.
 
 ## Usage
 
-Canary simply installs some tools for you to use.
+Canary provides a unified and decoupled platform for making use of powerful linting and static analysis tools that we make heavy use of at stickee.
 
 ### Options
 
