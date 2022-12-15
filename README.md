@@ -30,11 +30,11 @@ It includes:
 
 [Lint Staged](https://github.com/okonet/lint-staged) can be used to lint staged files and [Husky](https://typicode.github.io/husky) can be used to manage the git pre-commit hook that would call it.
 
-The install command will copy example config files over for these tools but you **must** install them before running it.
+The `install` command will copy example config files over for these tools but you **must** install them before running it.
 
 ## Installation
 
-```
+```bash
 mkdir -p tools/canary
 composer require --working-dir=tools/canary stickee/canary
 tools/canary/vendor/bin/canary install
@@ -52,7 +52,7 @@ Canary simply installs some tools for you to use.
 
 To pass options through you must write them after a `--`.
 
-```
+```bash
 tools/canary/vendor/bin/canary analyse -- -c phpstan.ci.neon --error-format=github
 ```
 
@@ -62,7 +62,7 @@ tools/canary/vendor/bin/canary analyse -- -c phpstan.ci.neon --error-format=gith
 
 [PHPStan](https://github.com/nunomaduro/larastan)
 
-```
+```bash
 tools/canary/vendor/bin/canary analyse -- -c phpstan.dist.neon
 ```
 
@@ -76,7 +76,7 @@ See [stickee/larastan-config](https://github.com/stickeeuk/larastan-config) for 
 
 [PHP CS Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
 
-```
+```bash
 tools/canary/vendor/bin/canary fix -- --config .php-cs-fixer.dist.php
 ```
 
@@ -92,7 +92,7 @@ See [stickee/php-cs-fixer-config](https://github.com/stickeeuk/php-cs-fixer-conf
 
 [Rector](https://github.com/rectorphp/rector) in `--dry-run` mode
 
-```
+```bash
 tools/canary/vendor/bin/canary suggest
 ```
 
@@ -106,7 +106,7 @@ See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more
 
 [Rector](https://github.com/rectorphp/rector)
 
-```
+```bash
 tools/canary/vendor/bin/canary improve
 ```
 
@@ -126,6 +126,6 @@ You _may_ find it useful to add these `improve`ments as patches with Git.
 
 You could use a Git integration in your editor or stage the `improve`ments as patches with:
 
-```
+```bash
 git add <file> -p
 ```
