@@ -119,7 +119,8 @@ abstract class ToolCommand extends Command
             }
         } else {
             $taskSuccess = true;
-            $output = $process->getOutput();
+            $output = $process->getErrorOutput();
+            $output .= $process->getOutput();
         }
 
         $this->newLine();
