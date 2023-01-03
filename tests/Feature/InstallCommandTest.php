@@ -12,7 +12,7 @@ $requiredFiles = [
     '.lintstagedrc.json',
     'phpstan.ci.neon',
     'phpstan.dist.neon',
-    'rector.php'
+    'rector.php',
 ];
 
 beforeEach(function () use ($requiredFiles) {
@@ -47,7 +47,7 @@ it('copies local files', function () {
     );
 });
 
-it ('overwrites copied GitHub workflow with its own', function () {
+it('overwrites copied GitHub workflow with its own', function () {
     $this->artisan('install');
 
     $file = '.github/workflows/php.yaml';
@@ -108,7 +108,7 @@ it('updates the .gitignore', function () {
     $disk->deleteDirectory($directory);
 });
 
-it ('updates the Larastan config paths', function () {
+it('updates the Larastan config paths', function () {
     $this->artisan('install');
 
     $contents = Storage::disk('cwd')->get('phpstan.dist.neon');
