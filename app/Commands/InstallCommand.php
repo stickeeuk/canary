@@ -64,6 +64,7 @@ class InstallCommand extends Command
 
         $this->task('Copy Larastan config', function () {
             $this->copyFilesFromVendorDirectory('stickee/larastan-config/dist');
+
             return $this->amendLarastanConfig();
         });
 
@@ -119,8 +120,9 @@ class InstallCommand extends Command
 
         if (! $disk->exists($path)) {
             $this->newLine();
-            $this->error("Something went wrong.");
+            $this->error('Something went wrong.');
             $this->error("Could not amend your {$larastanConfig} file.");
+
             return false;
         }
 
