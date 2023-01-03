@@ -16,12 +16,12 @@ afterEach(function() {
 
 it('works', function () {
     $this->artisan('fix')
-        ->expectsOutputToContain('Fixed all files')
+        ->expectsOutputToContain('stickee')
         ->assertExitCode(0);
 });
 
 it('allows passing options', function () {
-    $this->artisan('fix --dry-run')
-        ->expectsOutputToContain('Checked all files')
+    $this->artisan('fix -- --dry-run --verbose')
+        ->expectsOutputToContain('Legend:')
         ->assertExitCode(0);
 });
