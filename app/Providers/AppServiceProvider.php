@@ -19,8 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        Application::starting(
-            static function (Application $artisan): void {
+        \Illuminate\Console\Application::starting(
+            static function ($artisan) {
                 $artisan->setName(<<<'EOF'
                     ,,,,,,,,,,,,,,,,,,,,,,*&@@@@@@@@@@@@@%,,,,,,,,,,,,,,,,,,,,,,
                       ,,,,,,,,,,,,,,,,,*@@@@&,,,,,,,,,,,,,,/@@@@@,,,,,,,,,,,,,,,,,
@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
                       ,,,,,,,,,,,,,,#@@@,,,,,,,,,,,,,,,,,,&@@,,,/@@@*,,,,,,,,,,,,,
                       ,,,,,,,,,,,,,,,,,*@@@@%,,,,,,,,,,#@@@*,,,@@,,,,,,,,,,,,,,,,,
                       ,,,,,,,,,,,,,,,,,,,,,,*&@@@@@@@@@#,,,,,,,,,,,,,,,,,,,,,,,,,,
-                    EOF . PHP_EOL . PHP_EOL);
+                    EOF . "\n\n");
             }
         );
     }
