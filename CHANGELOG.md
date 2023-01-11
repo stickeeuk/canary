@@ -1,3 +1,11 @@
+## [2.0.3](https://github.com/stickeeuk/canary/compare/v2.0.2...v2.0.3) (2023-01-11)
+
+
+### Bug Fixes
+
+* composer bin dir fallback by reverting earlier change ([ef75ad5](https://github.com/stickeeuk/canary/commit/ef75ad57417716f4b92173e1cfba48ac955e6a1d))
+* composer bin dir requirements and fallback ([72499b4](https://github.com/stickeeuk/canary/commit/72499b4a4c23178ced7dc70c08b4f7f06389a73a))
+
 ## [2.0.2](https://github.com/stickeeuk/canary/compare/v2.0.1...v2.0.2) (2022-12-14)
 
 
