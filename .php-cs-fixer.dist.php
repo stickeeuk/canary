@@ -6,7 +6,6 @@ use Stickee\PhpCsFixerConfig;
 
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__ . '/app')
-    ->in(__DIR__ . '/config')
     ->in(__DIR__ . '/tests')
     ->append([
         __DIR__ . '/.php-cs-fixer.dist.php',
