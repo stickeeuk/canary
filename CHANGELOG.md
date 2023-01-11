@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/stickeeuk/canary/compare/v2.0.3...v2.0.4) (2023-01-11)
+
+
+### Bug Fixes
+
+* example PHP CS Fixer action not always picking up changed files ([0ab8a68](https://github.com/stickeeuk/canary/commit/0ab8a68fe731703fb5e162e78c8a976b8efb314c))
+
 ## [2.0.3](https://github.com/stickeeuk/canary/compare/v2.0.2...v2.0.3) (2023-01-11)
 
 
