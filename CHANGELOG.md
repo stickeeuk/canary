@@ -1,3 +1,10 @@
+## [2.0.5](https://github.com/stickeeuk/canary/compare/v2.0.4...v2.0.5) (2023-01-12)
+
+
+### Bug Fixes
+
+* PHP CS Fixer action finding too many changed files ([92d50ae](https://github.com/stickeeuk/canary/commit/92d50ae9d34606cfd1357d34ebaa7d28dc3cb597))
+
 ## [2.0.4](https://github.com/stickeeuk/canary/compare/v2.0.3...v2.0.4) (2023-01-11)
 
 
