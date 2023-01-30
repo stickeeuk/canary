@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ ubuntu-latest, macos-latest ]
+        os: [ ubuntu-latest, ]
         php: [ 8.1, ]
 
     name: PHP v${{ matrix.php }} - ${{ matrix.os }}
