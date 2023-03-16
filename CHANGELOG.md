@@ -1,3 +1,25 @@
+## [2.0.5](https://github.com/stickeeuk/canary/compare/v2.0.4...v2.0.5) (2023-01-12)
+
+
+### Bug Fixes
+
+* PHP CS Fixer action finding too many changed files ([92d50ae](https://github.com/stickeeuk/canary/commit/92d50ae9d34606cfd1357d34ebaa7d28dc3cb597))
+
+## [2.0.4](https://github.com/stickeeuk/canary/compare/v2.0.3...v2.0.4) (2023-01-11)
+
+
+### Bug Fixes
+
+* example PHP CS Fixer action not always picking up changed files ([0ab8a68](https://github.com/stickeeuk/canary/commit/0ab8a68fe731703fb5e162e78c8a976b8efb314c))
+
+## [2.0.3](https://github.com/stickeeuk/canary/compare/v2.0.2...v2.0.3) (2023-01-11)
+
+
+### Bug Fixes
+
+* composer bin dir fallback by reverting earlier change ([ef75ad5](https://github.com/stickeeuk/canary/commit/ef75ad57417716f4b92173e1cfba48ac955e6a1d))
+* composer bin dir requirements and fallback ([72499b4](https://github.com/stickeeuk/canary/commit/72499b4a4c23178ced7dc70c08b4f7f06389a73a))
+
 ## [2.0.2](https://github.com/stickeeuk/canary/compare/v2.0.1...v2.0.2) (2022-12-14)
 
 

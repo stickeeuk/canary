@@ -51,3 +51,4 @@ jobs:
         with:
           commit_message: "style: PHP CS Fixer"
           file_pattern: "**/*.php"
+          disable_globbing: true

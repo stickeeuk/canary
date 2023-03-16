@@ -114,7 +114,7 @@ abstract class ToolCommand extends Command
             $stdOut = $process->getOutput();
 
             if ($stdOut !== '' && $stdOut !== '0') {
-                $output .= "\n";
+                $output .= PHP_EOL;
                 $output .= $stdOut;
             }
         } else {
