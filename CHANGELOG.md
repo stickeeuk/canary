@@ -1,3 +1,10 @@
+## [2.0.6](https://github.com/stickeeuk/canary/compare/v2.0.5...v2.0.6) (2023-03-16)
+
+
+### Bug Fixes
+
+* output for tool command to also contain error output ([#22](https://github.com/stickeeuk/canary/issues/22)) ([ef9585d](https://github.com/stickeeuk/canary/commit/ef9585dfabe2dd1e7462bb75a3563fe9d2024b15))
+
 ## [2.0.5](https://github.com/stickeeuk/canary/compare/v2.0.4...v2.0.5) (2023-01-12)
 
 
