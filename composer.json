@@ -1,6 +1,6 @@
 {
     "name": "stickee/canary",
-    "description": "Stickee PHP Code Style tools",
+    "description": "Canary provides linting and static analysis for Stickee Laravel projects",
     "homepage": "https://github.com/stickeeuk/canary",
     "type": "project",
     "license": "MIT",
