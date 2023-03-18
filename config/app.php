@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Providers\AppServiceProvider;
+use Intonate\TinkerZero\TinkerZeroServiceProvider;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -58,7 +61,10 @@ return [
     | this array to grant expanded functionality to your applications.
     |
      */
-    'providers' => [
-        App\Providers\AppServiceProvider::class,
-    ],
+    'providers' => array_filter([
+        AppServiceProvider::class,
+        class_exists(TinkerZeroServiceProvider::class)
+            ? TinkerZeroServiceProvider::class
+            : null,
+    ]),
 ];

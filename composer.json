@@ -25,6 +25,7 @@
         "symfony/process": "^6.1"
     },
     "require-dev": {
+        "intonate/tinker-zero": "^1.2",
         "mockery/mockery": "^1.4.4",
         "pestphp/pest": "^1.21.3",
         "roave/security-advisories": "dev-latest"
