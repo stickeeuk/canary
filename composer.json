@@ -11,7 +11,13 @@
     "authors": [
         {
             "name": "Paul Tibbetts",
-            "email": "paul.tibbetts@stickee.co.uk"
+            "email": "paul.tibbetts@stickee.co.uk",
+            "role": "Lead Developer"
+        },
+        {
+            "name": "Oliver Earl",
+            "email": "oliver.earl@stickee.co.uk",
+            "role": "Developer"
         }
     ],
     "require": {
