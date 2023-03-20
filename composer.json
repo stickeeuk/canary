@@ -1,6 +1,6 @@
 {
     "name": "stickee/canary",
-    "description": "Stickee PHP Code Style tools",
+    "description": "Canary provides linting and static analysis for Stickee Laravel projects",
     "homepage": "https://github.com/stickeeuk/canary",
     "type": "project",
     "license": "MIT",
@@ -11,7 +11,13 @@
     "authors": [
         {
             "name": "Paul Tibbetts",
-            "email": "paul.tibbetts@stickee.co.uk"
+            "email": "paul.tibbetts@stickee.co.uk",
+            "role": "Lead Developer"
+        },
+        {
+            "name": "Oliver Earl",
+            "email": "oliver.earl@stickee.co.uk",
+            "role": "Developer"
         }
     ],
     "require": {
@@ -25,6 +31,7 @@
         "symfony/process": "^6.1"
     },
     "require-dev": {
+        "intonate/tinker-zero": "^1.2",
         "mockery/mockery": "^1.4.4",
         "pestphp/pest": "^1.21.3",
         "roave/security-advisories": "dev-latest"
