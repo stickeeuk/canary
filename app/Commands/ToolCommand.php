@@ -40,7 +40,10 @@ abstract class ToolCommand extends Command
             [$this->toolPath(), $this->command],
             $this->commandOptions,
             $args,
-            $this->getDynamicOptions()
+            array_unique([
+                ...$this->getDynamicOptions(),
+                ...$this->commandSpecificOptions(),
+            ]),
         );
 
         /*
@@ -82,6 +85,16 @@ abstract class ToolCommand extends Command
         }
 
         return 0;
+    }
+
+    /**
+     * Returns additional options to be passed into a command, specific to that particular command.
+     *
+     * @return array<int, string>
+     */
+    protected function commandSpecificOptions(): array
+    {
+        return [];
     }
 
     protected function taskReportsFailure(Process $process): bool
