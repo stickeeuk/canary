@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/stickeeuk/canary/compare/v2.0.6...v2.1.0) (2023-03-20)
+
+
+### Features
+
+* Allow command specific options to be injected in - in this case, for disabling xDebug when present for PHPStan performance. ([14e8d95](https://github.com/stickeeuk/canary/commit/14e8d9577c91c45aa615a32d230099c8247dca23))
+
 ## [2.0.6](https://github.com/stickeeuk/canary/compare/v2.0.5...v2.0.6) (2023-03-16)
 
 
