@@ -33,7 +33,7 @@
     "require-dev": {
         "intonate/tinker-zero": "^1.2",
         "mockery/mockery": "^1.4.4",
-        "pestphp/pest": "^1.21.3",
+        "pestphp/pest": "^2.0",
         "roave/security-advisories": "dev-latest"
     },
     "autoload": {
