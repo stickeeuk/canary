@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\Storage;
-
 it('works', function () {
     $this->artisan('suggest config/app.php')
         ->expectsOutputToContain('[OK] Rector is done!')
@@ -17,27 +15,9 @@ it('allows passing options', function () {
 });
 
 it('suggests improvements on bad code', function () {
-    $badCode = <<<'EOF'
-        <?php
-        class BadCode
-        {
-            public function example(): void
-            {
-                return true;
-            }
-        }
-        EOF;
-
-    $path = 'BadCode.php';
-    $storagePath = storage_path('app' . DIRECTORY_SEPARATOR . $path);
-
-    // Create temporary file to process.
-    Storage::put($path, $badCode);
+    $storagePath = base_path('tests/Fixtures/BadCode.php');
 
     $this->artisan("suggest {$storagePath}")
-        ->expectsOutputToContain('public function example(): bool')
+        ->expectsOutputToContain('public function run(): int')
         ->assertFailed();
-
-    // Tidy up temporary file.
-    Storage::delete($path);
 });
