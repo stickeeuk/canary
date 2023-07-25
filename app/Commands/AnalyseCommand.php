@@ -17,12 +17,4 @@ class AnalyseCommand extends ToolCommand
     protected string $toolName = 'phpstan';
 
     protected string $command = 'analyse';
-
-    /** @inheritDoc */
-    protected function commandSpecificOptions(): array
-    {
-        return [
-            '--xdebug',
-        ];
-    }
 }
