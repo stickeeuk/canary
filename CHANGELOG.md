@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/stickeeuk/canary/compare/v2.1.0...v2.1.1) (2023-07-25)
+
+
+### Bug Fixes
+
+* remove xdebug option added to Analyse command ([453c403](https://github.com/stickeeuk/canary/commit/453c403b73cbb5e769ccb65cfa9b57e3baee00f1))
+
 # [2.1.0](https://github.com/stickeeuk/canary/compare/v2.0.6...v2.1.0) (2023-03-20)
 
 
