@@ -30,7 +30,7 @@ jobs:
       - name: Run PHP-CS-Fixer
         run: vendor/bin/php-cs-fixer fix
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "style: PHP CS Fixer"
           file_pattern: "**/*.php"
