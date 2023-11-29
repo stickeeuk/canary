@@ -58,30 +58,30 @@ class InstallCommand extends Command
             return false;
         }
 
-        $this->task('Copy PHP CS Fixer config', function () {
+        $this->task('Copy PHP CS Fixer config', function (): void {
             $this->copyFilesFromVendorDirectory('stickee/php-cs-fixer-config/dist');
         });
 
-        $this->task('Copy Larastan config', function () {
+        $this->task('Copy Larastan config', function (): bool {
             $this->copyFilesFromVendorDirectory('stickee/larastan-config/dist');
 
             return $this->amendLarastanConfig();
         });
 
-        $this->task('Copy Rector config', function () {
+        $this->task('Copy Rector config', function (): void {
             $this->copyFilesFromVendorDirectory('stickee/rector-config/dist');
         });
 
-        $this->task('Copy Husky pre-commit', function () {
+        $this->task('Copy Husky pre-commit', function (): void {
             $file = '.husky' . DIRECTORY_SEPARATOR . 'pre-commit';
             $this->copyFileToCwd('local', $file, $file);
         });
 
-        $this->task('Copy Lint Staged config', function () {
+        $this->task('Copy Lint Staged config', function (): void {
             $this->copyFileToCwd('local', '.lintstagedrc.json');
         });
 
-        $this->task('Copy example GitHub Workflow', function () {
+        $this->task('Copy example GitHub Workflow', function (): void {
             $file = '.github' . DIRECTORY_SEPARATOR . 'workflows' . DIRECTORY_SEPARATOR . 'php.yaml';
             $this->copyFileToCwd('local', $file);
         });
@@ -98,7 +98,7 @@ class InstallCommand extends Command
             $success = false;
         }
 
-        $this->task('Destination directory exists', static fn (): bool => $success);
+        $this->task('Destination directory exists', static fn(): bool => $success);
 
         if (! $success) {
             render(<<<'HTML'
