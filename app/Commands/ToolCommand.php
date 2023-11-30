@@ -71,7 +71,7 @@ abstract class ToolCommand extends Command
         }, 'in progress');
 
         if ($commandReportsFailure) {
-            $this->task($this->failedCommandTaskTitle, static fn (): bool => false);
+            $this->task($this->failedCommandTaskTitle, static fn(): bool => false);
 
             return 1;
         }
@@ -112,7 +112,7 @@ abstract class ToolCommand extends Command
         return vendor_path('bin' . DIRECTORY_SEPARATOR);
     }
 
-    /** @return array<string, bool> */
+    /** @return array{success: bool, reportsFailure: bool} */
     private function process(array $command): array
     {
         $process = new Process($command);
