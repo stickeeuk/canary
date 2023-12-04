@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/stickeeuk/canary/compare/v2.1.1...v2.1.2) (2023-12-04)
+
+
+### Bug Fixes
+
+* PHP GitHub Actions workflow doesn't work with 'act' ([3641ec7](https://github.com/stickeeuk/canary/commit/3641ec7f2727211c4d69c374292bf163ef9090a6))
+
 ## [2.1.1](https://github.com/stickeeuk/canary/compare/v2.1.0...v2.1.1) (2023-07-25)
 
 
