@@ -14,22 +14,22 @@ jobs:
       - name: Setup Composer auth
         run: |
           echo "{\"http-basic\": {\"repo.stickee.co.uk\": {\"username\": \"${{ secrets.STICKEE_REPO_USERNAME }}\",\"password\": \"${{ secrets.STICKEE_REPO_PASSWORD }}\"},\"nova.laravel.com\": {\"username\": \"${{ secrets.NOVA_USERNAME }}\",\"password\": \"${{ secrets.NOVA_PASSWORD }}\"}}}" >> auth.json
-      - name: Install dependencies
-        uses: php-actions/composer@v6
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          php_version: "8.1"
-          php_extensions: bcmath gd gnupg intl mbstring soap zip
+          php-version: "8.1"
+          extensions: bcmath, gd, gnupg, mbstring, zip
+      - name: Install dependencies
+        run: composer install
       - name: Cleanup Composer auth
         run: rm -rf auth.json
       - name: Copy env
-        run: cp .env.ci .env
+        run: cp .env.example .env
       - name: Create key
         run: php artisan key:generate
       - name: Install PHPStan
-        uses: php-actions/composer@v6
-        with:
-          php_version: "8.1"
-          args: --working-dir=tools/canary
+        run: |
+          composer install --working-dir=tools/canary
       - name: Run PHPStan
         run: |
             tools/canary/vendor/bin/phpstan analyse -c phpstan.ci.neon --error-format=github
@@ -40,10 +40,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Install PHP CS Fixer
-        uses: php-actions/composer@v6
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          args: --working-dir=tools/canary
+            php-version: "8.1"
+            extensions: bcmath, gd, gnupg, mbstring, zip
+      - name: Install PHP CS Fixer
+        run: |
+          composer install --working-dir=tools/canary
       - name: Run PHP-CS-Fixer
         run: tools/canary/vendor/bin/php-cs-fixer fix
       - name: Commit changes
