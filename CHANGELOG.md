@@ -1,3 +1,11 @@
+## [2.1.3](https://github.com/stickeeuk/canary/compare/v2.1.2...v2.1.3) (2024-01-04)
+
+
+### Bug Fixes
+
+* rector config using outdated rules ([be31b4e](https://github.com/stickeeuk/canary/commit/be31b4e92d70820e626527f734cc55a46a489bfe))
+* update Larastan config to org version and fix phpstan config to use it ([1b38964](https://github.com/stickeeuk/canary/commit/1b3896411b7d4ce41b6ca430de4335064691f5b1))
+
 ## [2.1.2](https://github.com/stickeeuk/canary/compare/v2.1.1...v2.1.2) (2023-12-04)
 
 
