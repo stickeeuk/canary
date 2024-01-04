@@ -21,7 +21,7 @@ it('works', function () {
 });
 
 it('allows passing options', function () {
-    $this->artisan('fix -- --dry-run --verbose')
-        ->expectsOutputToContain('Legend:')
+    $this->artisan('fix -- --help')
+        ->expectsOutputToContain('Exit code of the `fix` command is built using following bit flags:')
         ->assertExitCode(0);
 });
