@@ -23,12 +23,12 @@
     "require": {
         "composer-runtime-api": "^2.2.2",
         "php": "^8.1",
-        "laravel-zero/framework": "^10.0",
-        "nunomaduro/termwind": "^1.14",
+        "laravel-zero/framework": "^11.0",
+        "nunomaduro/termwind": "^2.0",
         "stickee/larastan-config": "^2.0.1",
         "stickee/php-cs-fixer-config": "^2.0",
         "stickee/rector-config": "^2.0",
-        "symfony/process": "^6.1"
+        "symfony/process": "^7.0"
     },
     "require-dev": {
         "intonate/tinker-zero": "^1.2",
