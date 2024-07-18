@@ -21,10 +21,8 @@ jobs:
               with:
                   php-version: "8.3"
                   extensions: bcmath, exif, gd, gnupg, intl, mbstring, soap, zip
-            - name: Install dependencies
-              run: composer install
             - name: Install Canary
-              run: composer install --working-dir=tools/canary
+              run: composer install
             - name: Run Canary Analyse
               run: ./canary analyse -- -c phpstan.ci.neon --error-format=github
             - name: Run Canary Fix
