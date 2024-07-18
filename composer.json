@@ -22,7 +22,7 @@
     ],
     "require": {
         "composer-runtime-api": "^2.2.2",
-        "php": "^8.1",
+        "php": "^8.3",
         "laravel-zero/framework": "^11.0",
         "nunomaduro/termwind": "^2.0",
         "stickee/larastan-config": "^2.0.1",
