@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/stickeeuk/canary/compare/v3.1.0...v3.1.1) (2024-07-19)
+
+
+### Bug Fixes
+
+* namespace collision ([#61](https://github.com/stickeeuk/canary/issues/61)) ([e8aadbd](https://github.com/stickeeuk/canary/commit/e8aadbdb013c06eca56035af5e60d7bb63c382ca))
+
 ## [3.1.0](https://github.com/stickeeuk/canary/compare/v3.0.0...v3.1.0) (2024-07-19)
 
 
