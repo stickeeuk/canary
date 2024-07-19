@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Commands\InstallCommand;
-use App\Commands\ToolCommand;
+use Stickee\Canary\Commands\InstallCommand;
+use Stickee\Canary\Commands\ToolCommand;
 
 test('strict types are used in the project')
     ->expect('App')

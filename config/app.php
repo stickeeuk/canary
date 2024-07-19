@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Providers\AppServiceProvider;
+use Stickee\Canary\Providers\AppServiceProvider;
 use Intonate\TinkerZero\TinkerZeroServiceProvider;
 
 return [

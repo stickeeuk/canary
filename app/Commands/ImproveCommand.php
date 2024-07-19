@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Commands;
+namespace Stickee\Canary\Commands;
 
 class ImproveCommand extends ToolCommand
 {
