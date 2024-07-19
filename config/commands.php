@@ -56,7 +56,7 @@ return [
      */
 
     'hidden' => [
-        App\Commands\InstallCommand::class,
+        Stickee\Canary\Commands\InstallCommand::class,
         NunoMaduro\LaravelConsoleSummary\SummaryCommand::class,
         Symfony\Component\Console\Command\DumpCompletionCommand::class,
         Symfony\Component\Console\Command\HelpCommand::class,

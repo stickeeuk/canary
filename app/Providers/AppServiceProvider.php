@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Providers;
+namespace Stickee\Canary\Providers;
 
 use Illuminate\Console\Application;
 use Illuminate\Support\ServiceProvider;

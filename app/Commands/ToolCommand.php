@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Commands;
+namespace Stickee\Canary\Commands;
 
 use Illuminate\Support\Str;
 use LaravelZero\Framework\Commands\Command;
