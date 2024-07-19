@@ -15,7 +15,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: "8.3"
-          extensions: bcmath, exif, gd, gnupg, intl, mbstring, soap, zip
       - name: Install Canary
         run: composer install
       - name: Run Canary Analyse
