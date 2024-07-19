@@ -1,3 +1,24 @@
+## [3.1.0](https://github.com/stickeeuk/canary/compare/v3.0.0...v3.1.0) (2024-07-19)
+
+
+### Features
+
+* Resolve issues with Laravel 11 and PHP 8.3 ([f1f6e49](https://github.com/stickeeuk/canary/commit/f1f6e492c2f6a774672eb141617820cb705a8bb6))
+
+
+## [3.0.0](https://github.com/stickeeuk/canary/compare/v2.1.3...v3.0.0) (2024-05-03)
+
+
+### Breaking
+
+* Now requires Laravel 11 and PHP 8.3
+
+
+### Features
+
+* Updated for laravel 11 support ([ad916fa](https://github.com/stickeeuk/canary/commit/ad916fa20022405fbf5e0d4e3b3bd3e448a0270b))
+
+
 ## [2.1.3](https://github.com/stickeeuk/canary/compare/v2.1.2...v2.1.3) (2024-01-04)
 
 
