@@ -1,30 +1,30 @@
 on:
-    pull_request:
-        paths:
-            - '**.php'
+  pull_request:
+    paths:
+      - '**.php'
 name: PHP
 
 jobs:
-    php:
-        name: canary
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
-            - name: Setup PHP
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: "8.3"
-                  extensions: bcmath, exif, gd, gnupg, intl, mbstring, soap, zip
-            - name: Install Canary
-              run: composer install
-            - name: Run Canary Analyse
-              run: ./canary analyse -- -c phpstan.ci.neon --error-format=github
-            - name: Run Canary Fix
-              run: ./canary fix
-            - name: Commit changes
-              uses: stefanzweifel/git-auto-commit-action@v5
-              with:
-                  commit_message: "style: Canary"
-                  file_pattern: "**/*.php"
-                  disable_globbing: true
+  php:
+    name: canary
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: bcmath, exif, gd, gnupg, intl, mbstring, soap, zip
+      - name: Install Canary
+        run: composer install
+      - name: Run Canary Analyse
+        run: ./canary analyse -- -c phpstan.ci.neon --error-format=github
+      - name: Run Canary Fix
+        run: ./canary fix
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "style: Canary"
+          file_pattern: "**/*.php"
+          disable_globbing: true
