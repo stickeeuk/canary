@@ -7,7 +7,7 @@ namespace Stickee\Canary\Providers;
 use Illuminate\Console\Application;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class CanaryServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
