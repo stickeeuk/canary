@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/stickeeuk/canary/compare/v3.1.1...v3.1.2) (2024-08-14)
+
+
+### Bug Fixes
+
+* rename AppServiceProvider to avoid collision ([4c2ed04](https://github.com/stickeeuk/canary/commit/4c2ed0448808ce8905f8db3e7b1edec7a6c7dd6b))
+
 ## [3.1.1](https://github.com/stickeeuk/canary/compare/v3.1.0...v3.1.1) (2024-07-19)
 
 
