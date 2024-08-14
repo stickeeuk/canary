@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Stickee\Canary\Providers\AppServiceProvider;
+use Stickee\Canary\Providers\CanaryServiceProvider;
 use Intonate\TinkerZero\TinkerZeroServiceProvider;
 
 return [
@@ -62,7 +62,7 @@ return [
     |
      */
     'providers' => array_filter([
-        AppServiceProvider::class,
+        CanaryServiceProvider::class,
         class_exists(TinkerZeroServiceProvider::class)
             ? TinkerZeroServiceProvider::class
             : null,
