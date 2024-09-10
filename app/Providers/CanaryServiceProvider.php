@@ -6,12 +6,14 @@ namespace Stickee\Canary\Providers;
 
 use Illuminate\Console\Application;
 use Illuminate\Support\ServiceProvider;
+use Override;
 
 class CanaryServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
+    #[Override]
     public function register(): void
     {
         Application::starting(
