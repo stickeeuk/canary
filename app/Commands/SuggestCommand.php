@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Stickee\Canary\Commands;
 
 use Illuminate\Support\Str;
+use Override;
 use Symfony\Component\Process\Process;
 
 class SuggestCommand extends ToolCommand
@@ -27,6 +28,7 @@ class SuggestCommand extends ToolCommand
 
     protected string $failedCommandTaskTitle = 'no suggestions could be made';
 
+    #[Override]
     protected function taskReportsFailure(Process $process): bool
     {
         return Str::of($process->getOutput())
