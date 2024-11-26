@@ -1,6 +1,8 @@
 <?php
 
-final class DemoFile
+namespace Tests\Fixtures;
+
+final class BadCode
 {
     public function run(): int
     {
