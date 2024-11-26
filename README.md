@@ -22,7 +22,6 @@ It includes:
 
 - the stickee [PHP CS Fixer config](https://github.com/stickeeuk/php-cs-fixer-config/) to adhere to our code styles
 - the stickee [Larastan config](https://github.com/stickeeuk/larastan-config/) to analyse your code
-- the stickee [Rector config](https://github.com/stickeeuk/rector-config) to refactor your code
 - shortcuts to run the included tools
 - an installation command
 
@@ -87,48 +86,6 @@ It _can_ be ran against a single file.
 It _should_ be ran against staged files as part of the `pre-commit` hook.
 
 See [stickee/php-cs-fixer-config](https://github.com/stickeeuk/php-cs-fixer-config) for more details.
-
-### `suggest`
-
-[Rector](https://github.com/rectorphp/rector) in `--dry-run` mode
-
-```bash
-tools/canary/vendor/bin/canary suggest
-```
-
-This command will suggest improvements as diffs in the terminal.
-
-Any `suggest`ed improvements must be performed manually or you can run the `improve` command to do it for you.
-
-See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more details.
-
-### `improve`
-
-[Rector](https://github.com/rectorphp/rector)
-
-```bash
-tools/canary/vendor/bin/canary improve
-```
-
-This command will refactor your code in an attempt to improve it.
-
-Any `improve`d code **must** be checked before committing.
-
-It _can_ be ran against a single file.
-
-It should **not** be ran as part of the `pre-commit` hook.
-
-See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more details.
-
-#### Note
-
-You _may_ find it useful to add these `improve`ments as patches with Git.
-
-You could use a Git integration in your editor or stage the `improve`ments as patches with:
-
-```bash
-git add <file> -p
-```
 
 ## Contributions
 
