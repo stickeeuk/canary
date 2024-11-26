@@ -25,5 +25,4 @@ return RectorConfig::configure()
     ->withSkip([
         EncapsedStringsToSprintfRector::class, // changes "th{$is}" to sprintf('th%s', 'is')
         MixedTypeRector::class, // removes docblocks
-        PostIncDecToPreIncDecRector::class, // changes $i++ to ++$i
     ]);
