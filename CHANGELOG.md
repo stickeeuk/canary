@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/stickeeuk/canary/compare/v3.1.2...v3.2.0) (2024-11-26)
+
+
+### Features
+
+* lock to PHPStan v1 ([68f2a32](https://github.com/stickeeuk/canary/commit/68f2a327317ce816f9031bd4e74ff90077b6740b))
+
 ## [3.1.2](https://github.com/stickeeuk/canary/compare/v3.1.1...v3.1.2) (2024-08-14)
 
 
