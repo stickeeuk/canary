@@ -12,7 +12,6 @@ $requiredFiles = [
     '.lintstagedrc.json',
     'phpstan.ci.neon',
     'phpstan.dist.neon',
-    'rector.php',
 ];
 
 beforeEach(function () use ($requiredFiles) {

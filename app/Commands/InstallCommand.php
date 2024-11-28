@@ -65,10 +65,6 @@ class InstallCommand extends Command
             return $this->amendLarastanConfig();
         });
 
-        $this->task('Copy Rector config', function (): void {
-            $this->copyFilesFromVendorDirectory('stickee/rector-config/dist');
-        });
-
         $this->task('Copy Husky pre-commit', function (): void {
             $file = '.husky' . DIRECTORY_SEPARATOR . 'pre-commit';
             $this->copyFileToCwd('local', $file, $file);
