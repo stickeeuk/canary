@@ -35,7 +35,7 @@ class InstallCommand extends Command
                 </div>
             HTML);
 
-        if (! $this->tasks()) {
+        if (!$this->tasks()) {
             return 1;
         }
 
@@ -51,7 +51,7 @@ class InstallCommand extends Command
 
     private function tasks(): bool
     {
-        if (! $this->ensureDestinationDirectoryExists()) {
+        if (!$this->ensureDestinationDirectoryExists()) {
             return false;
         }
 
@@ -91,13 +91,13 @@ class InstallCommand extends Command
         $success = true;
         $disk = Storage::disk('cwd');
 
-        if (! $disk->exists($this->destination)) {
+        if (!$disk->exists($this->destination)) {
             $success = false;
         }
 
         $this->task('Destination directory exists', static fn(): bool => $success);
 
-        if (! $success) {
+        if (!$success) {
             render(<<<'HTML'
                     <div class="py-1">
                         <div class="bg-red-500">The destination directory must exist to copy files to.</div>
@@ -115,7 +115,7 @@ class InstallCommand extends Command
         $disk = Storage::disk('cwd');
         $path = $this->destination . $larastanConfig;
 
-        if (! $disk->exists($path)) {
+        if (!$disk->exists($path)) {
             $this->newLine();
             $this->error('Something went wrong.');
             $this->error("Could not amend your {$larastanConfig} file.");
@@ -142,7 +142,7 @@ class InstallCommand extends Command
             $disk = Storage::disk('cwd');
             $path = $this->destination . $gitignore;
 
-            if (! $disk->exists($path)) {
+            if (!$disk->exists($path)) {
                 return false;
             }
 
@@ -156,7 +156,7 @@ class InstallCommand extends Command
             $disk->append($path, $needle);
         });
 
-        if (! $amendedGitIgnore) {
+        if (!$amendedGitIgnore) {
             $this->newLine();
             $this->error("Could not find your {$gitignore} file.");
             $this->error("Please create a {$gitignore} file or ensure you are installing into the correct directory.");
