@@ -5,17 +5,18 @@ declare(strict_types=1);
 use Stickee\Canary\Commands\InstallCommand;
 use Stickee\Canary\Commands\ToolCommand;
 
-test('strict types are used in the project')
-    ->expect('App')
+arch()->preset()->php();
+arch()->preset()->laravel();
+arch()->preset()->security();
+
+arch()
+    ->expect('Stickee\Canary')
+    ->toUseStrictEquality()
     ->toUseStrictTypes();
 
-test('canary commands should extend the tool command class')
-    ->expect('App\Commands')
+arch('canary commands should extend the tool command class')
+    ->expect('Stickee\Canary\Commands')
     ->classes()
+    ->toHaveSuffix('Command')
     ->toExtend(ToolCommand::class)
     ->ignoring([InstallCommand::class, ToolCommand::class]);
-
-test('there are no debugging methods present in the source code')
-    ->expect(['dd', 'var_dump', 'echo', 'ray', 'die', 'exit', 'dump', 'print_r'])
-    ->not()
-    ->toBeUsed();
