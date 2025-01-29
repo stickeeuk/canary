@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-if (! function_exists('vendor_path')) {
+if (!function_exists('vendor_path')) {
     function vendor_path(string $path = ''): string
     {
-        if (! empty($GLOBALS['_composer_bin_dir'])) {
+        if (!empty($GLOBALS['_composer_bin_dir'])) {
             $vendorPath = $GLOBALS['_composer_bin_dir'] . DIRECTORY_SEPARATOR;
             $vendorPath = str_replace(DIRECTORY_SEPARATOR . 'bin', '', $vendorPath);
         } else {

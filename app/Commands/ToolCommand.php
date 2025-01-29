@@ -30,7 +30,7 @@ abstract class ToolCommand extends Command
 
     public function handle(): int
     {
-        if (! $this->alias) {
+        if (!$this->alias) {
             $this->alias = $this->command;
         }
 
@@ -76,7 +76,7 @@ abstract class ToolCommand extends Command
             return 1;
         }
 
-        if (! $success) {
+        if (!$success) {
             return 1;
         }
 
@@ -121,7 +121,7 @@ abstract class ToolCommand extends Command
 
         $taskFailedSuccessfully = $this->taskReportsFailure($process);
 
-        if (! $process->isSuccessful() && ! $taskFailedSuccessfully) {
+        if (!$process->isSuccessful() && !$taskFailedSuccessfully) {
             $taskSuccess = false;
             $output = $process->getErrorOutput();
             $stdOut = $process->getOutput();
