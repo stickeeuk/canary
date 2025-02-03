@@ -17,10 +17,10 @@ jobs:
           php-version: "8.3"
       - name: Install Canary
         run: composer install
-      - name: Run Canary Analyse
-        run: ./canary analyse -- -c phpstan.ci.neon --error-format=github
-      - name: Run Canary Fix
-        run: ./canary fix
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse -- -c phpstan.ci.neon --error-format=github
+      - name: Run PHP CS Fixer
+        run: ./vendor/bin/php-cs-fixer fix
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
