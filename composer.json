@@ -25,9 +25,9 @@
         "php": "^8.3",
         "laravel-zero/framework": "^11.0",
         "nunomaduro/termwind": "^2.0",
-        "stickee/larastan-config": "2.4.0",
+        "stickee/larastan-config": "^3.0.0",
         "stickee/php-cs-fixer-config": "^3.0.0",
-        "stickee/rector-config": "^3.0",
+        "stickee/rector-config": "^4.0.0",
         "symfony/process": "^7.0"
     },
     "require-dev": {
