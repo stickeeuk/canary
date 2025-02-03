@@ -114,7 +114,7 @@ See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more
 [Rector](https://github.com/rectorphp/rector) in `--dry-run` mode
 
 ```bash
-vendor/bin/rector --dry-run && git add . -p
+vendor/bin/rector --dry-run
 ```
 
 This command will suggest improvements as diffs in the terminal.
