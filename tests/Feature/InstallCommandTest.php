@@ -56,8 +56,8 @@ it('overwrites copied GitHub workflow with its own', function () {
 
     $contents = Storage::disk('cwd')->get($file);
 
-    $this->assertStringContainsString('php-stan', $contents);
-    $this->assertStringContainsString('php-cs-fixer', $contents);
+    $this->assertStringContainsString('canary analyse', $contents);
+    $this->assertStringContainsString('canary fix', $contents);
 });
 
 it('works in a custom directory', function () {
@@ -106,20 +106,4 @@ it('updates the .gitignore', function () {
 
     // Tidy up.
     $disk->deleteDirectory($directory);
-});
-
-it('updates the Larastan config paths', function () {
-    $this->artisan('install');
-
-    $contents = Storage::disk('cwd')->get('phpstan.dist.neon');
-
-    $this->assertStringContainsString(
-        'tools/canary/',
-        $contents
-    );
-
-    $this->assertStringNotContainsString(
-        'tools/phpstan/',
-        $contents
-    );
 });

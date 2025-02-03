@@ -35,14 +35,11 @@ The `install` command will copy example configs over for these tools but you **m
 ## Installation
 
 ```bash
-mkdir -p tools/canary
-composer require --working-dir=tools/canary stickee/canary
-tools/canary/vendor/bin/canary install
+composer require --dev stickee/canary
+vendor/bin/canary install
 ```
 
-_[Why do we install tools into their own directory?](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer#installation)_
-
-You should commit this new directory and the config files that are installed.
+You should commit the config files that are installed.
 
 ## Usage
 
@@ -53,7 +50,7 @@ Canary provides a unified and decoupled platform for making use of powerful lint
 To pass options through you must write them after a `--`.
 
 ```bash
-tools/canary/vendor/bin/canary analyse -- -c phpstan.ci.neon --error-format=github
+vendor/bin/canary analyse -- -c phpstan.ci.neon --error-format=github
 ```
 
 ### Commands
@@ -63,7 +60,7 @@ tools/canary/vendor/bin/canary analyse -- -c phpstan.ci.neon --error-format=gith
 [PHPStan](https://github.com/nunomaduro/larastan)
 
 ```bash
-tools/canary/vendor/bin/canary analyse -- -c phpstan.dist.neon
+vendor/bin/canary analyse -- -c phpstan.dist.neon
 ```
 
 This command will perform static-analysis of your whole project.
@@ -77,7 +74,7 @@ See [stickee/larastan-config](https://github.com/stickeeuk/larastan-config) for 
 [PHP CS Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
 
 ```bash
-tools/canary/vendor/bin/canary fix -- --config .php-cs-fixer.dist.php
+vendor/bin/canary fix -- --config .php-cs-fixer.dist.php
 ```
 
 This command will attempt to fix minor code style issues.
@@ -93,7 +90,7 @@ See [stickee/php-cs-fixer-config](https://github.com/stickeeuk/php-cs-fixer-conf
 [Rector](https://github.com/rectorphp/rector) in `--dry-run` mode
 
 ```bash
-tools/canary/vendor/bin/canary suggest
+vendor/bin/canary suggest
 ```
 
 This command will suggest improvements as diffs in the terminal.
@@ -107,7 +104,7 @@ See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more
 [Rector](https://github.com/rectorphp/rector)
 
 ```bash
-tools/canary/vendor/bin/canary improve
+vendor/bin/canary improve
 ```
 
 This command will refactor your code in an attempt to improve it.

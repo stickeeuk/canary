@@ -5,54 +5,53 @@ on:
 name: PHP
 
 jobs:
-  php-stan:
-    name: analyse
+  php:
+    name: canary
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Setup Composer auth
-        run: |
-          echo "{\"http-basic\": {\"repo.stickee.co.uk\": {\"username\": \"${{ secrets.STICKEE_REPO_USERNAME }}\",\"password\": \"${{ secrets.STICKEE_REPO_PASSWORD }}\"},\"nova.laravel.com\": {\"username\": \"${{ secrets.NOVA_USERNAME }}\",\"password\": \"${{ secrets.NOVA_PASSWORD }}\"}}}" >> auth.json
+        uses: actions/checkout@v4
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.1"
-          extensions: bcmath, gd, gnupg, mbstring, zip
+          php-version: "8.3"
+          extensions: bcmath, gd, gnupg, mbstring, zip, protobuf, opentelemetry
+        env:
+            COMPOSER_AUTH_JSON: |
+                {
+                    "http-basic": {
+                        "repo.stickee.co.uk": {
+                            "username": "${{ secrets.STICKEE_REPO_USERNAME }}",
+                            "password": "${{ secrets.STICKEE_REPO_PASSWORD }}"
+                      },
+                      "nova.laravel.com": {
+                            "username": "${{ secrets.NOVA_USERNAME }}",
+                            "password": "${{ secrets.NOVA_4_PASSWORD }}"
+                        }
+                    }
+                }
       - name: Install dependencies
-        run: composer install
+        run: COMPOSER_CACHE_DIR="/tmp/composer-cache" composer install
       - name: Cleanup Composer auth
         run: rm -rf auth.json
       - name: Copy env
-        run: cp .env.example .env
+        run: cp .env.ci .env
       - name: Create key
         run: php artisan key:generate
-      - name: Install PHPStan
-        run: |
-          composer install --working-dir=tools/canary
-      - name: Run PHPStan
-        run: |
-            tools/canary/vendor/bin/phpstan analyse -c phpstan.ci.neon --error-format=github
-  php-cs-fixer:
-    name: fix
-    needs: php-stan
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-            php-version: "8.1"
-            extensions: bcmath, gd, gnupg, mbstring, zip
-      - name: Install PHP CS Fixer
-        run: |
-          composer install --working-dir=tools/canary
-      - name: Run PHP-CS-Fixer
-        run: tools/canary/vendor/bin/php-cs-fixer fix
+      - name: Install Canary
+        run: composer install
+      - name: Run Canary Analyse
+        run: vendor/bin/canary analyse -- -c phpstan.ci.neon --error-format=github
+      - name: Run Canary Fix
+        run: vendor/bin/canary fix
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "style: PHP CS Fixer"
+          commit_message: "style: Canary"
           file_pattern: "**/*.php"
           disable_globbing: true

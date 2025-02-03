@@ -59,10 +59,8 @@ class InstallCommand extends Command
             $this->copyFilesFromVendorDirectory('stickee/php-cs-fixer-config/dist');
         });
 
-        $this->task('Copy Larastan config', function (): bool {
+        $this->task('Copy Larastan config', function (): void {
             $this->copyFilesFromVendorDirectory('stickee/larastan-config/dist');
-
-            return $this->amendLarastanConfig();
         });
 
         $this->task('Copy Rector config', function (): void {
@@ -106,33 +104,6 @@ class InstallCommand extends Command
         }
 
         return $success;
-    }
-
-    private function amendLarastanConfig(): bool
-    {
-        $larastanConfig = 'phpstan.dist.neon';
-
-        $disk = Storage::disk('cwd');
-        $path = $this->destination . $larastanConfig;
-
-        if (!$disk->exists($path)) {
-            $this->newLine();
-            $this->error('Something went wrong.');
-            $this->error("Could not amend your {$larastanConfig} file.");
-
-            return false;
-        }
-
-        $original = $disk->get($path);
-
-        $new = Str::of($original)->replaceMatches(
-            pattern: '/tools\/phpstan\//m',
-            replace: 'tools/canary/'
-        );
-
-        $disk->put($path, (string) $new);
-
-        return true;
     }
 
     private function amendGitignore(): bool
