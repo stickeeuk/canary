@@ -1,3 +1,34 @@
+# [4.0.0](https://github.com/stickeeuk/canary/compare/v3.2.0...v4.0.0) (2025-02-04)
+
+
+* v4 (#72) ([b2ce318](https://github.com/stickeeuk/canary/commit/b2ce318139f090aa8e992e82f4567c5d7bb77fdc)), closes [#72](https://github.com/stickeeuk/canary/issues/72) [#75](https://github.com/stickeeuk/canary/issues/75)
+
+
+### BREAKING CHANGES
+
+* Canary now bundles together tools as a metapackage and does not contain any commands or code of its own.
+
+* feat: install into root directory
+
+PHP CS Fixer changed their stance on installation directory
+in https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/pull/8356
+* this is not a *hard* breaking change, more like
+a marketing one, to signify a change big enough to consider it
+a new version.
+
+* style: no space after not operator
+
+* chore(deps): update to latest PHP CS Fixer config
+
+* chore(deps): update PHPStan and Rector to latest
+
+this includes the update of PHPStan from v2 to v3 and Rector from
+v1 to v2.
+
+* feat: rename `.php-cs-fixer.dist.php` to `.php-cs-fixer.php`
+
+this makes the PHP CS Fixer config we use compatible with Laravel Shift, so it _should_ adhere to our code styles from now on.
+
 # [3.2.0](https://github.com/stickeeuk/canary/compare/v3.1.2...v3.2.0) (2024-11-26)
 
 
