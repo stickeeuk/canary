@@ -2,7 +2,7 @@
     "name": "stickee/canary",
     "description": "Canary provides linting and static analysis for Stickee Laravel projects",
     "homepage": "https://github.com/stickeeuk/canary",
-    "type": "project",
+    "type": "metapackage",
     "license": "MIT",
     "support": {
         "issues": "https://github.com/stickeeuk/canary/issues",
@@ -12,7 +12,7 @@
         {
             "name": "Paul Tibbetts",
             "email": "paul.tibbetts@stickee.co.uk",
-            "role": "Lead Developer"
+            "role": "Developer"
         },
         {
             "name": "Oliver Earl",
@@ -23,41 +23,17 @@
     "require": {
         "composer-runtime-api": "^2.2.2",
         "php": "^8.3",
-        "laravel-zero/framework": "^11.0",
-        "nunomaduro/termwind": "^2.0",
-        "stickee/larastan-config": "2.4.0",
-        "stickee/php-cs-fixer-config": "^2.4.0",
-        "stickee/rector-config": "^3.0",
-        "symfony/process": "^7.0"
+        "stickee/larastan-config": "^3.0.0",
+        "stickee/php-cs-fixer-config": "^3.0.0",
+        "stickee/rector-config": "^4.0.0"
     },
     "require-dev": {
-        "intonate/tinker-zero": "^1.2",
-        "mockery/mockery": "^1.4.4",
-        "pestphp/pest": "^3.0",
         "roave/security-advisories": "dev-latest"
-    },
-    "autoload": {
-        "psr-4": {
-            "Stickee\\Canary\\": "app/"
-        },
-        "files": [
-            "app/helpers.php"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
     },
     "config": {
         "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
+        "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "bin": ["canary"]
+    "prefer-stable": true
 }
