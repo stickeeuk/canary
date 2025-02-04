@@ -23,49 +23,55 @@ It includes:
 - the stickee [PHP CS Fixer config](https://github.com/stickeeuk/php-cs-fixer-config/) to adhere to our code styles
 - the stickee [Larastan config](https://github.com/stickeeuk/larastan-config/) to analyse your code
 - the stickee [Rector config](https://github.com/stickeeuk/rector-config) to refactor your code
-- shortcuts to run the included tools
-- an installation command
-
-## Husky and Lint Staged
-
-[Lint Staged](https://github.com/okonet/lint-staged) can be used to lint staged files and [Husky](https://typicode.github.io/husky) can be used to manage the pre-commit hook that would call it.
-
-The `install` command will copy example configs over for these tools but you **must** install them before running it.
 
 ## Installation
 
+### Composer
+
 ```bash
 composer require --dev stickee/canary
-vendor/bin/canary install
 ```
 
-You should commit the config files that are installed.
+### Config
+
+```bash
+cp vendor/stickee/php-cs-fixer-config/dist/.php-cs-fixer.php .
+cp vendor/stickee/larastan-config/dist/phpstan.dist.neon .
+cp vendor/stickee/rector-config/dist/rector.php .
+```
+
+You should commit these config files.
+
+### .gitignore
+
+```bash
+if grep -q '.php-cs-fixer.cache' .gitignore;
+then
+    echo ".gitignore contains .php-cs-fixer.cache";
+else
+    echo "Adding .php-cs-fixer.cache to .gitignore";
+    echo ".php-cs-fixer.cache" >> .gitignore;
+    echo "Done";
+fi
+```
 
 ## Usage
 
-Canary provides a unified and decoupled platform for making use of powerful linting and static analysis tools that we make heavy use of at stickee.
+Canary provides a unified package that brings together powerful linting and static analysis tools that we make heavy use of at stickee.
 
-### Options
-
-To pass options through you must write them after a `--`.
-
-```bash
-vendor/bin/canary analyse -- -c phpstan.ci.neon --error-format=github
-```
-
-### Commands
+### Tools
 
 ### `analyse`
 
 [PHPStan](https://github.com/nunomaduro/larastan)
 
 ```bash
-vendor/bin/canary analyse -- -c phpstan.dist.neon
+vendor/bin/phpstan analyse -c phpstan.dist.neon
 ```
 
 This command will perform static-analysis of your whole project.
 
-It _should_ be ran as part of the `pre-commit` hook.
+It _could_ be ran as part of a `pre-commit` hook.
 
 See [stickee/larastan-config](https://github.com/stickeeuk/larastan-config) for more details.
 
@@ -74,37 +80,23 @@ See [stickee/larastan-config](https://github.com/stickeeuk/larastan-config) for 
 [PHP CS Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
 
 ```bash
-vendor/bin/canary fix -- --config .php-cs-fixer.dist.php
+vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php
 ```
 
 This command will attempt to fix minor code style issues.
 
 It _can_ be ran against a single file.
 
-It _should_ be ran against staged files as part of the `pre-commit` hook.
+It _could_ be ran against staged files as part of a `pre-commit` hook.
 
 See [stickee/php-cs-fixer-config](https://github.com/stickeeuk/php-cs-fixer-config) for more details.
-
-### `suggest`
-
-[Rector](https://github.com/rectorphp/rector) in `--dry-run` mode
-
-```bash
-vendor/bin/canary suggest
-```
-
-This command will suggest improvements as diffs in the terminal.
-
-Any `suggest`ed improvements must be performed manually or you can run the `improve` command to do it for you.
-
-See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more details.
 
 ### `improve`
 
 [Rector](https://github.com/rectorphp/rector)
 
 ```bash
-vendor/bin/canary improve
+vendor/bin/rector
 ```
 
 This command will refactor your code in an attempt to improve it.
@@ -113,26 +105,27 @@ Any `improve`d code **must** be checked before committing.
 
 It _can_ be ran against a single file.
 
-It should **not** be ran as part of the `pre-commit` hook.
+It should **not** be ran as part of a `pre-commit` hook.
 
 See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more details.
 
-#### Note
+### `suggest`
 
-You _may_ find it useful to add these `improve`ments as patches with Git.
-
-You could use a Git integration in your editor or stage the `improve`ments as patches with:
+[Rector](https://github.com/rectorphp/rector) in `--dry-run` mode
 
 ```bash
-git add <file> -p
+vendor/bin/rector --dry-run
 ```
+
+This command will suggest improvements as diffs in the terminal.
+
+See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more details.
 
 ## Contributions
 
-Contributions are welcome! Canary is written using [Laravel Zero](https://github.com/laravel-zero/laravel-zero).
-Improvements to any of the amalgamated open source tools should be directed towards their respective repositories.
+Contributions are welcome!
 
-You are encouraged to provide tests, which are written using the [Pest](https://github.com/pestphp/pest) testing framework.
+Improvements to any of the amalgamated open source tools should be directed towards their respective repositories.
 
 ## License
 
