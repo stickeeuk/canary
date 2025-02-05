@@ -37,6 +37,7 @@ composer require --dev stickee/canary
 ```bash
 cp vendor/stickee/php-cs-fixer-config/dist/.php-cs-fixer.php .
 cp vendor/stickee/larastan-config/dist/phpstan.dist.neon .
+cp vendor/stickee/larastan-config/dist/phpstan.ci.neon .
 cp vendor/stickee/rector-config/dist/rector.php .
 ```
 
