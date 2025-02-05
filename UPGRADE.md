@@ -12,6 +12,7 @@ Please first read [Larastan's upgrade guide](https://github.com/larastan/larasta
 This part of the Larastan guide has been done for you.
 
 ### Other dependencies that rely on PHPStan
+######  Likelihood Of Impact: Low
 
 You _may_ need to update other dependencies that rely on PHPStan, such as `spatie/laravel-ray`.
 
@@ -20,7 +21,7 @@ composer update namespace/name --with-all-dependencies
 ```
 
 ### Canary installation directory has changed
-######  Likelihood Of Impact: High
+######  Likelihood Of Impact: High but not technically necessary
 
 PHP CS Fixer changed their recommendation on where to install tools and we have followed that recommendation with Canary.
 
@@ -56,3 +57,10 @@ vendor/bin/rector process app/Models -c vendor/stickee/rector-config/dist/add-ge
 ```
 
 or alternatively follow the [Larastan guide](https://github.com/larastan/larastan/blob/3.x/UPGRADE.md#correct-return-types-for-model-relation-methods) directly.
+
+### Configuration files
+######  Likelihood Of Impact: High
+
+Some of the configuration files have been updated.
+
+You should follow the Installation Instructions from the README to copy the config files into your repo and commit them.
