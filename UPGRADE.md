@@ -64,3 +64,18 @@ or alternatively follow the [Larastan guide](https://github.com/larastan/larasta
 Some of the configuration files have been updated.
 
 You should follow the Installation Instructions from the README to copy the config files into your repo and commit them.
+
+### GitHub Actions Workflow
+######  Likelihood Of Impact: High
+
+You will need to change the commands that GitHub Actions runs in a `.github/workflows/php.yaml` or equivalent file.
+
+```diff
+- tools/canary/vendor/bin/canary analyse
++ vendor/bin/phpstan analyse
+```
+
+```diff
+- tools/canary/vendor/bin/canary fix
++ vendor/bin/php-cs-fixer fix
+```
