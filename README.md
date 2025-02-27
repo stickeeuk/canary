@@ -30,6 +30,13 @@ It includes:
 
 ```bash
 composer require --dev stickee/canary
+
+# Add scripts to composer.json
+composer config --json scripts.analyse "vendor/bin/phpstan analyse -c phpstan.dist.neon"
+composer config --json scripts.analyze "composer analyse"
+composer config --json scripts.fix "vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php"
+composer config --json scripts.improve "vendor/bin/rector"
+composer config --json scripts.suggest "vendor/bin/rector --dry-run"
 ```
 
 ### Config
@@ -67,12 +74,13 @@ Canary provides a unified package that brings together powerful linting and stat
 [PHPStan](https://github.com/nunomaduro/larastan)
 
 ```bash
-vendor/bin/phpstan analyse -c phpstan.dist.neon
+composer analyse
+# or vendor/bin/phpstan analyse -c phpstan.dist.neon
 ```
 
 This command will perform static-analysis of your whole project.
 
-It _could_ be ran as part of a `pre-commit` hook.
+It _could_ be run as part of a `pre-commit` hook.
 
 See [stickee/larastan-config](https://github.com/stickeeuk/larastan-config) for more details.
 
@@ -81,14 +89,15 @@ See [stickee/larastan-config](https://github.com/stickeeuk/larastan-config) for 
 [PHP CS Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
 
 ```bash
-vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php
+composer fix
+# or vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php
 ```
 
 This command will attempt to fix minor code style issues.
 
-It _can_ be ran against a single file.
+It _can_ be run against a single file.
 
-It _could_ be ran against staged files as part of a `pre-commit` hook.
+It _could_ be run against staged files as part of a `pre-commit` hook.
 
 See [stickee/php-cs-fixer-config](https://github.com/stickeeuk/php-cs-fixer-config) for more details.
 
@@ -97,16 +106,17 @@ See [stickee/php-cs-fixer-config](https://github.com/stickeeuk/php-cs-fixer-conf
 [Rector](https://github.com/rectorphp/rector)
 
 ```bash
-vendor/bin/rector
+composer improve
+# or vendor/bin/rector
 ```
 
 This command will refactor your code in an attempt to improve it.
 
 Any `improve`d code **must** be checked before committing.
 
-It _can_ be ran against a single file.
+It _can_ be run against a single file.
 
-It should **not** be ran as part of a `pre-commit` hook.
+It should **not** be run as part of a `pre-commit` hook.
 
 See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more details.
 
@@ -115,7 +125,8 @@ See [stickee/rector-config](https://github.com/stickeeuk/rector-config) for more
 [Rector](https://github.com/rectorphp/rector) in `--dry-run` mode
 
 ```bash
-vendor/bin/rector --dry-run
+composer suggest
+# or vendor/bin/rector --dry-run
 ```
 
 This command will suggest improvements as diffs in the terminal.
