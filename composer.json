@@ -23,7 +23,7 @@
     "require": {
         "composer-runtime-api": "^2.2.2",
         "php": "^8.3",
-        "stickee/larastan-config": "^3.0.0",
+        "stickee/larastan-config": "^3.1.1",
         "stickee/php-cs-fixer-config": "^3.0.0",
         "stickee/rector-config": "^4.0.0"
     },
