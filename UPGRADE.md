@@ -1,5 +1,13 @@
 # Upgrade guide
 
+## Upgrading from the metapackage
+
+Canary supplies its config templates under `vendor/stickee/canary/dist/`. Update any scripts that copy templates from the former `stickee/*-config` packages. The [installation instructions](README.md#config) show the new paths.
+
+The PHP CS Fixer classes keep their `Stickee\PhpCsFixerConfig` namespace, so existing project configs can use them. If your project declares `stickee/php-cs-fixer-config` as a direct dependency, remove that requirement so Composer loads the fixer classes from Canary.
+
+The Eloquent relation type migration config is at `vendor/stickee/canary/dist/laravel-app/add-generic-return-type-to-relations.php`.
+
 ## Upgrading to `4.0` from `3.x`
 
 This is a major release with lots of breaking changes coming from the tools Canary relies on, mainly PHPStan going from `v1` to `v2`.
