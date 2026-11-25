@@ -1,8 +1,8 @@
 {
     "name": "stickee/canary",
-    "description": "Canary provides linting and static analysis for Stickee Laravel projects",
+    "description": "Canary provides linting and static analysis for Stickee PHP projects",
     "homepage": "https://github.com/stickeeuk/canary",
-    "type": "metapackage",
+    "type": "library",
     "license": "MIT",
     "support": {
         "issues": "https://github.com/stickeeuk/canary/issues",
@@ -21,14 +21,26 @@
         }
     ],
     "require": {
+        "adamwojs/php-cs-fixer-phpdoc-force-fqcn": "^2.0",
         "composer-runtime-api": "^2.2.2",
+        "driftingly/rector-laravel": "^2.0.2",
+        "ekino/phpstan-banned-code": "^3.0",
+        "friendsofphp/php-cs-fixer": "^3.91.3",
+        "larastan/larastan": "^3.10",
+        "nesbot/carbon": "^2.72.6 || ^3.8.4",
         "php": "^8.3",
-        "stickee/larastan-config": "^3.1.1",
-        "stickee/php-cs-fixer-config": "^3.0.0",
-        "stickee/rector-config": "^4.0.0"
+        "phpstan/phpstan": "^2.2",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-mockery": "^2.0",
+        "rector/rector": "^2.0.7"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"
+    },
+    "autoload": {
+        "psr-4": {
+            "Stickee\\PhpCsFixerConfig\\": "src/"
+        }
     },
     "config": {
         "preferred-install": "dist",
